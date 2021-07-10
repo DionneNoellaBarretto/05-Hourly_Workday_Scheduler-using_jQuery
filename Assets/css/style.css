@@ -1,8 +1,28 @@
-/* variables*/
-
-/* all text color is white unless otherwise specified*/
+/* color variables*/
 :root {
-  --white-color-text: white;
+  --white-color: white;
+  --tablet-color-text: rgb(46, 46, 45);
+  --mobile-color-text: rgb(87, 87, 86);
+  --black-color: black;
+  --tablet-color-text: rgb(65, 161, 190);
+  --mobile-color-text: rgb(189, 8, 189);
+  --green-future-background-color: #77dd77;
+  --green-tablet-background-color: #93e093;
+  --green-mobile-background-color: #a8dfa8;
+  --red-present-background-color: #ff6961;
+  --red-tablet-background-color: #f7837d;
+  --red-mobile-background-color: #f5c0bd;
+  --grey-past-background-color: #d3d3d3;
+  --grey-tablet-background-color: #c2c1c1;
+  --grey-mobile-background-color: #f1eded;
+  --save-button-background:#64b3c5;
+  --save-button-desktop:#086c83;
+  --save-button-tablet:#22854b;
+  --save-button-mobile:#d2aaf8;
+  --del-button-desktop:#751717;
+  --del-button-tablet:#df585f;
+  --del-button-mobile:#f7979c;
+
 }
 
 /* element selectors */
@@ -16,8 +36,8 @@ textarea {
   background: transparent;
   border: none;
   resize: none;
-  color: #000000 !important;
-  border-left: 1px solid black;
+  color: var(--black-color);
+  border-left: 1px solid var(--black-color);
   padding: 10px;
 }
 
@@ -28,13 +48,28 @@ em{
   font-size: smaller;
 }
 
+
 /* class selectors */
+/* Time Blocks */
+.row {
+  white-space: pre-wrap;
+  height: 80px;
+  border-top: 1px solid var( --white-color);
+  text-align: center;
+  border-radius: 15px;
+}
+.hour {
+  background-color: var( --white-color);
+  color: var(--black-color);
+  border-top: 1px dashed var(--black-color);
+}
+
 .jumbotron {
   text-align: center;
   background-color: transparent;
-  color: black !important;
+  color: var(--black-color);
   border-radius: 0;
-  border-bottom: 10px solid black;
+  border-bottom: 10px solid var(--black-color);
 }
 
 .description {
@@ -46,44 +81,168 @@ em{
   border-radius: 15px;
 }
 
-.row {
-  white-space: pre-wrap;
-  height: 80px;
-  border-top: 1px solid white;
-}
-
-.hour {
-  background-color: #ffffff;
-  color: #000000 !important; 
-  border-top: 1px dashed #000000;
-}
 /* colors the background of events from the past grey ( based on the current time ) */
 .past {
-  background-color: #d3d3d3;
-  color: var(--white-color-text);
+  background-color: var(--grey-past-background-color);
+  color: var(--white-color);
 }
 /* colors the background of events from the present red ( based on the current time ) */
 
 .present {
-  background-color: #ff6961;
-  color: var(--white-color-text);
+  background-color: var(--red-present-background-color);
+  color: var(--white-color);
 }
 
 /* colors the background of events from the future green ( based on the current time ) */
 .future {
-  background-color: #77dd77;
-  color: var(--white-color-text);
+  background-color: var(--green-future-background-color);
+  color: var(--white-color);
 }
 
-.saveBtn {
+/* Delete Button */
+.delBtn {
   border-left: 1px solid black;
+  background-color: rgb(193, 91, 84);
+  color: var(--del-button-desktop);
+}
+.delBtn i:hover {
+  font-size: 30px;
+    /* allows for gradual zooming when icon is hovered upon for 0.1s*/
+  transition: all .1s ease-in-out;
+}
+
+/* Save Button */
+.saveBtn {
+  border-left: 1px solid var(--black-color);
   border-top-right-radius: 15px;
   border-bottom-right-radius: 15px;
-  background-color: #06aed5;
-  color: var(--white-color-text);
+  background-color: var(--save-button-background);
+  color: var(--save-button-desktop);
 }
 
 .saveBtn i:hover {
-  font-size: 20px;
-  transition: all 0.3s ease-in-out;
+  font-size: 30px;
+  /* allows for gradual zooming when icon is hovered upon for a 0.1s*/
+  transition: all 0.1s ease-in-out;
+}
+
+/* media queries for tablet and mobile screens */
+/* Tablets responsive ui */
+@media screen and (max-width: 768px) {
+  .row {
+    height: auto;
+    margin-left: 3%;
+    margin-right: 3%;
+    border-top: var(--tablet-color-text);
+  }
+  .hour {
+    margin-top: 3%;
+    padding-bottom: 5px;
+    font-size: 20px;
+    font-weight: bold;
+    border: none;
+    border-bottom: 1px solid var(--tablet-color-text);
+    background-color: var(--grey-color-text-tablet);
+    color: var(--tablet-color-text);
+  }
+  textarea {
+    text-align: center;
+    border-left: none;
+  }
+  .delBtn {
+    border-left: none;
+    background-color: var(--del-button-tablet);
+    color: var(--del-button-desktop);
+    
+  }
+  .saveBtn {
+    border-top-right-radius: .25rem;
+    border-bottom-right-radius: .25rem;
+    border-left: none;
+    color: var(--tablet-color-text);
+  }
+
+  .jumbotron {
+    color: var(--tablet-color-text);
+    border-bottom: 10px solid ;
+  }
+
+  /* colors the background of events from the past grey ( based on the current time ) */
+  .past {
+    background-color: var(--grey-tablet-background-color);
+    color: var(--tablet-color-text);
+  }
+  /* colors the background of events from the present red ( based on the current time ) */
+  
+  .present {
+    background-color: var(--red-tablet-background-color);
+    color: var(--tablet-color-text);
+  }
+  
+  /* colors the background of events from the future green ( based on the current time ) */
+  .future {
+    background-color: var(--green-tablet-background-color);
+    color: var(--tablet-color-text);
+  }
+  
+}
+/* Cellphones responsive ui */
+@media screen and (max-width: 768px) {
+
+  .row {
+    height: auto;
+    margin-left: 3%;
+    margin-right: 3%;
+    border-top: var(--mobile-color-text);
+  }
+  .hour {
+    margin-top: 3%;
+    padding-bottom: 5px;
+    font-size: 20px;
+    font-weight: bold;
+    border: none;
+    border-bottom: 1px solid var(--mobile-color-text);
+    background-color: var(--grey-color-text-mobile);
+    color: var(--mobile-color-text);
+  }
+  textarea {
+    text-align: center;
+    border-left: none;
+  }
+  .delBtn {
+    border-left: none;
+    background-color: var(--del-button-mobile);
+    color: var(--del-button-desktop);
+    
+  }
+  .saveBtn {
+    border-top-right-radius: .25rem;
+    border-bottom-right-radius: .25rem;
+    border-left: none;
+    color: var(--mobile-color-text);
+  }
+
+  .jumbotron {
+    color: var(--mobile-color-text);
+    border-bottom: 10px solid ;
+  }
+
+  /* colors the background of events from the past grey ( based on the current time ) */
+  .past {
+    background-color: var(--grey-mobile-background-color);
+    color: var(--mobile-color-text);
+  }
+  /* colors the background of events from the present red ( based on the current time ) */
+  
+  .present {
+    background-color: var(--red-mobile-background-color);
+    color: var(--mobile-color-text);
+  }
+  
+  /* colors the background of events from the future green ( based on the current time ) */
+  .future {
+    background-color: var(--green-mobile-background-color);
+    color: var(--mobile-color-text);
+  }
+  
 }

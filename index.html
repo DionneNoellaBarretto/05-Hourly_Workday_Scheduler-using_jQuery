@@ -26,21 +26,19 @@
       <p id="currentDay" class="lead"></p>
     </header>
 
-    <div class="container">
-      <!-- Time blocks go here -->
-      <div id="workhours"></div>
-    </div>
+      <!-- Hourly time blocks go here -->
+    <div class="container"></div>
 
-<!-- link to javascript -->
-<script src="./Assets/javascript/script.js"></script>
+<!-- the javascript portion will load last to avoid the html page from getting stuck incase the javascript calls don't render  -->
   <!-- link to jquery -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <!-- link to moment.js for the date and time information up top -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+  <!-- link to javascript -->
+<script src="./Assets/javascript/script.js"></script>
   </body>
-
+  
   <!-- a page footer with a last modified timestamp using inline javascript ; the pre tg ensures the formatting in the index html file persists during display -->
-<!-- the javascript portion will load last to avoid the html page from getting stuck incase the javascript call doesn't render  -->
   <pre>
     <footer>      Copyrights &copy DNB 2021 
     <em><script>  document.write("Last modified on: " + document.lastModified + ""); </script></em>
