@@ -1,7 +1,8 @@
-/* universal selectors*/
-*{
+/* variables*/
+
 /* all text color is white unless otherwise specified*/
-color: white;
+:root {
+  --white-color-text: white;
 }
 
 /* element selectors */
@@ -18,6 +19,10 @@ textarea {
   color: #000000 !important;
   border-left: 1px solid black;
   padding: 10px;
+}
+
+footer{
+  text-align: center;
 }
 
 /* class selectors */
@@ -52,16 +57,19 @@ textarea {
 /* colors the background of events from the past grey ( based on the current time ) */
 .past {
   background-color: #d3d3d3;
+  color: var(--white-color-text);
 }
 /* colors the background of events from the present red ( based on the current time ) */
 
 .present {
   background-color: #ff6961;
+  color: var(--white-color-text);
 }
 
 /* colors the background of events from the future green ( based on the current time ) */
 .future {
   background-color: #77dd77;
+  color: var(--white-color-text);
 }
 
 .saveBtn {
@@ -69,6 +77,7 @@ textarea {
   border-top-right-radius: 15px;
   border-bottom-right-radius: 15px;
   background-color: #06aed5;
+  color: var(--white-color-text);
 }
 
 .saveBtn i:hover {
