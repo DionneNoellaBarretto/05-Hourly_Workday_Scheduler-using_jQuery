@@ -23,7 +23,7 @@ GIVEN I am using a daily planner to create a schedule
 ```
 --------------------------------
 # DNB's SOLUTION: 
-UNC Boot Camp Submission: 🗂️ [Github Repository](https://github.com/DionneNoellaBarretto/05-Hourly_Workday_Scheduler-using_jQuery) | 📄[Github Page]()
+UNC Boot Camp Submission: 🗂️ [Github Repository](https://github.com/DionneNoellaBarretto/05-Hourly_Workday_Scheduler-using_jQuery) | 📄[Github Page](https://dionnenoellabarretto.github.io/05-Hourly_Workday_Scheduler-using_jQuery/)
 
 --------------------------------
 ### ResponseUI Solution - Desktop, Tablet & Mobile Views
