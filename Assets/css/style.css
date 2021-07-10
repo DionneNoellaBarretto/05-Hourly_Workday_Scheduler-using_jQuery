@@ -24,6 +24,9 @@ textarea {
 footer{
   text-align: center;
 }
+em{
+  font-size: smaller;
+}
 
 /* class selectors */
 .jumbotron {
