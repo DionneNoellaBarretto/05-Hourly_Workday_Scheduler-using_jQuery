@@ -1,10 +1,10 @@
 /* color variables*/
 :root {
   --white-color: white;
-  --tablet-color-text: rgb(46, 46, 45);
+  --tablet-color-text: rgb(39, 36, 202);
   --mobile-color-text: rgb(87, 87, 86);
   --black-color: black;
-  --tablet-color-text: rgb(65, 161, 190);
+  --tablet-color-text: rgb(27, 118, 146);
   --mobile-color-text: rgb(189, 8, 189);
   --green-future-background-color: #77dd77;
   --green-tablet-background-color: #93e093;
@@ -17,12 +17,11 @@
   --grey-mobile-background-color: #f1eded;
   --save-button-background:#64b3c5;
   --save-button-desktop:#086c83;
-  --save-button-tablet:#22854b;
-  --save-button-mobile:#d2aaf8;
+  --save-button-tablet:#0d1699;
+  --save-button-mobile:#771fc9;
   --del-button-desktop:#751717;
-  --del-button-tablet:#df585f;
-  --del-button-mobile:#f7979c;
-
+  --del-button-tablet:#717fcc;
+  --del-button-mobile:#da0dec;
 }
 
 /* element selectors */
@@ -61,7 +60,11 @@ em{
 .hour {
   background-color: var( --white-color);
   color: var(--black-color);
-  border-top: 1px dashed var(--black-color);
+  border: 2px dashed var(--black-color);
+  font-size: 12px;
+  text-align: center;
+  font-weight: bolder;
+  border-radius: 10%;
 }
 
 .jumbotron {
@@ -80,6 +83,7 @@ em{
   text-align: center;
   border-radius: 15px;
 }
+
 
 /* colors the background of events from the past grey ( based on the current time ) */
 .past {
@@ -128,7 +132,22 @@ em{
 
 /* media queries for tablet and mobile screens */
 /* Tablets responsive ui */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 992px) {
+
+  body {
+    font-size: 14px;
+    line-height: 0.8;
+  }
+
+  p{
+    font-size: 12px;
+  }
+
+  h1{
+    font-size: 18px;
+  }
+
+
   .row {
     height: auto;
     margin-left: 3%;
@@ -137,18 +156,16 @@ em{
   }
   .hour {
     margin-top: 3%;
-    padding-bottom: 5px;
-    font-size: 20px;
-    font-weight: bold;
+    padding: 7px 7px;
+    font-size: 12px;
+    font-weight: bolder;
     border: none;
-    border-bottom: 1px solid var(--tablet-color-text);
+    border: 2px solid var(--tablet-color-text);
+    border-radius: 10%;
     background-color: var(--grey-color-text-tablet);
-    color: var(--tablet-color-text);
+    color: var( --black-color);
   }
-  textarea {
-    text-align: center;
-    border-left: none;
-  }
+
   .delBtn {
     border-left: none;
     background-color: var(--del-button-tablet);
@@ -156,15 +173,15 @@ em{
     
   }
   .saveBtn {
-    border-top-right-radius: .25rem;
-    border-bottom-right-radius: .25rem;
+    border-top-right-radius: .45rem;
+    border-bottom-right-radius: .45rem;
     border-left: none;
-    color: var(--tablet-color-text);
+    color: var(--save-button-tablet);
   }
 
   .jumbotron {
     color: var(--tablet-color-text);
-    border-bottom: 10px solid ;
+    border-bottom: 12px solid ;
   }
 
   /* colors the background of events from the past grey ( based on the current time ) */
@@ -188,27 +205,34 @@ em{
 }
 /* Cellphones responsive ui */
 @media screen and (max-width: 768px) {
+  body {
+    font-size: 12px;
+    line-height: 0.6;
+  }
+  p{
+    font-size: 10px;
+  }
 
+  h1{
+    font-size: 16px;
+  }
   .row {
     height: auto;
-    margin-left: 3%;
-    margin-right: 3%;
+    margin-left: 2%;
+    margin-right: 2%;
     border-top: var(--mobile-color-text);
   }
   .hour {
-    margin-top: 3%;
+    margin-top: 2%;
     padding-bottom: 5px;
     font-size: 20px;
     font-weight: bold;
     border: none;
     border-bottom: 1px solid var(--mobile-color-text);
     background-color: var(--grey-color-text-mobile);
-    color: var(--mobile-color-text);
+    color: var( --black-color);
   }
-  textarea {
-    text-align: center;
-    border-left: none;
-  }
+
   .delBtn {
     border-left: none;
     background-color: var(--del-button-mobile);
@@ -219,7 +243,7 @@ em{
     border-top-right-radius: .25rem;
     border-bottom-right-radius: .25rem;
     border-left: none;
-    color: var(--mobile-color-text);
+    color: var(--save-button-mobile);
   }
 
   .jumbotron {
