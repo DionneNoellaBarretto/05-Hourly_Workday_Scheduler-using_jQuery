@@ -1,3 +1,13 @@
+/*to do's 
+a) need to add a redo schedule and a clear all text buttons
+b) see if the hours can be fixed when day starts in the evening
+c) fix the color for present/future/past
+d) add background image
+e) scale for table screen (intermediate)
+f) add coffee  icon up top
+g) hide the schedule your workday button once its clicked
+*/
+
 // returns the hour reading from the current moment in time - example: 18 for 18:XX hours, 2 for 2:xx hours
 var hourDisplayed = moment().format('H');
 // console.log(hour);
