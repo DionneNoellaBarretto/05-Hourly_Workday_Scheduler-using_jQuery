@@ -54,17 +54,18 @@ font-weight: bolder;
 
 .btn {
   border: none;
-    background-color: var(--schedule-button);
-    border-radius: 10px;
-    box-shadow: 0px 2px 8px 0px rgb(0 0 0 / 10%);
-    color: var(--black-color);
-    display: inline-block;
-    font-size: 22px;
-    line-height: 22px;
-    margin: 16px 16px 16px 20px;
-    padding: 14px 34px;
-    text-align: center;
-    cursor: pointer;
+  background-image: url("./Assets/images/gif.gif");
+  background-color: var(--schedule-button);
+  border-radius: 10px;
+  box-shadow: 0px 2px 8px 0px rgb(0 0 0 / 10%);
+  color: var(--black-color);
+  display: inline-block;
+  font-size: 22px;
+  line-height: 22px;
+  margin: 16px 16px 16px 20px;
+  padding: 14px 34px;
+  text-align: center;
+  cursor: pointer;
 }
 /* Time Blocks */
 .row {
@@ -87,7 +88,8 @@ font-weight: bolder;
 
 .jumbotron {
   text-align: center;
-  background-color: transparent;
+  /* background-color: transparent; */
+  background-image: url("./Assets/images/ConfettiDesktopBackground.png");
   color: var(--black-color);
   border-radius: 0;
   border-bottom: 10px solid var(--black-color);
@@ -158,6 +160,7 @@ font-weight: bolder;
     font-size: 15px;
     color: var(--del-button-smaller);
     font-style: bolder;
+      text-decoration:var(--red-present-background-color) dashed underline;
   }
 
 .display-3{
