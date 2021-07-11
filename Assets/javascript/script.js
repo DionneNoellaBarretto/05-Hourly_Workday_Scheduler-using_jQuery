@@ -41,14 +41,14 @@ alert(`You entered your start time as ${startHour} am!`);
     } else {
         alert(`You entered your start time as ${startHour} o'clock'!`);
     }
-
+    // console.log(startHour);
     // creates time block in the div container portion of the html file for a standard work hour slot of 8 hours (+1 hour lunch break) depending on the start time of the user)
 for (var i = startHour; i<= (Number(startHour)+9); i++) {
   //  console.log(i, Number(startHour));
     var row = $('<div class="row">');
     // bootstrap grid system concept for sizing the widths : ref --> https://www.w3schools.com/bootstrap/bootstrap_grid_system.asp
     var hour = $('<div class="col-md-1 hour">' + hourReading(i) + '</div>');
-console.log(hour);
+//console.log(hour);
     // learnt how to add a text area placeholder https://www.w3schools.com/tags/att_textarea_placeholder.asp
     var userText = $('<textarea placeholder= "Enter task here" class="todo col-md-8" id=' + i + '></textarea>');
     // flex box container concept https://getbootstrap.com/docs/4.4/utilities/flex/
@@ -58,7 +58,7 @@ console.log(hour);
    row.append(delBtn, hour, userText, saveBtn);
    // places all these rows in the container class section of the html file
    $(".container").append(row);
-   
+           
    // appends the right o'clock am/pm reading by calling the hourReading function and passing it an argument of i
    hourReading(i);
 //also initializes the location of text to be saved in browser local storage
@@ -68,7 +68,7 @@ console.log(hour);
 $(".col-md-8").each(function () {
     var time = $(this).attr("id");
     var number = parseInt(time);
-console.log(number,hourDisplayed);
+//console.log(number,hourDisplayed);
     // assign color classes with a space before appending to existing class list based on time comparison to the displayed current hour
     if (number < hourDisplayed) {
         $(this).addClass(" past");
@@ -78,8 +78,8 @@ console.log(number,hourDisplayed);
         $(this).addClass(" future");
     }
 });
-}
-}
+
+}   
 
 function rescheduleDay() {
     //confirms if user wants to reschedule their day
@@ -143,4 +143,4 @@ $(".delBtn").click(function () {
 });
 
 
-
+}

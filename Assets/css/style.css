@@ -42,7 +42,15 @@ em{
 
 
 /* class selectors */
-
+/* by default hides all elements with a class 'hide' */
+.hide {
+  display: none;
+}
+/* wavy underline: https://developer.mozilla.org/en-US/docs/Web/CSS/text-decoration */
+.lead {
+  text-decoration: rgb(247, 192, 210) wavy underline;
+font-weight: bolder;
+}
 
 .btn {
   border: none;
@@ -146,12 +154,15 @@ em{
     font-size: 12px;
     line-height: 0.8;
   }
-  p{
-    font-size: 10px;
+  .lead{
+    font-size: 15px;
+    color: var(--del-button-smaller);
+    font-style: bolder;
   }
 
-  h1{
-    font-size: 14px;
+.display-3{
+    font-size: 25px;
+    font-weight: bolder;
   }
   .btn {
     font-size: 0.8rem;
