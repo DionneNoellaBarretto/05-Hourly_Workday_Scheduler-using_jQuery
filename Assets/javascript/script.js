@@ -1,9 +1,9 @@
 /*to do's 
-a) need to add a redo schedule and a clear all text buttons
+✅a) need to add a redo schedule and a clear all text buttons
 b) see if the hours can be fixed when day starts in the evening
 c) fix the color for present/future/past
 d) add background image
-e) scale for table screen (intermediate)
+✅ e) scale for table screen (intermediate)
 f) add coffee  icon up top
 g) hide the schedule your workday button once its clicked
 ✅ h) text area placeholder 
@@ -17,14 +17,14 @@ console.log(hourDisplayed);
 $("#currentDay").text(moment().format('dddd, MMMM Do, YYYY' + " @ " + 'HH:mm:ss'));
  // mapping the schedule your workday button with and identifier
 var schedule = document.querySelector("#schedule");
+var reschedule = document.querySelector("#reschedule");
 // console.log(schedule);
 
 // Add event listener to the schedule_your_day button
 schedule.addEventListener("click", scheduleDay);
-
+reschedule.addEventListener("click", rescheduleDay);
 // request user for start and end time
 function scheduleDay() { 
-    
 var startHour = 0;
 startHour = prompt ("What hour do you start your day? \n\n Select a number between 1 and 24");
 if (startHour <1  || startHour > 24 || isNaN(startHour)) {
@@ -59,16 +59,27 @@ for (var i = startHour; i<= (Number(startHour)+9); i++) {
 //    also initializes the location of text to be saved in browser local storage
    saveTasks();
 }
+}
 
+function rescheduleDay() {
+    //confirms if user wants to reschedule their day
+    alert(`Click OK to proceed with rescheduling your day`);
+  //deletes all entries
+    $(".reschedule").click(function (){
+        $(".todo").val("");
+        localStorage.clear();})
+        //recalls schedule your day function
+    reschedule.classList.add('hide');    
+scheduleDay();
 }
 
 // Get the hour reading based on the i iteration from above and appends an am or pm depending on if the hour is before noon or after noon
 function hourReading(i) {
     var hours = "";
     if (i < 12) {
-        hours = i + "am";
+        hours = i + " am";
     } else if(i > 12){
-        hours = (i-12) + "pm";
+        hours = (i-12) + " pm";
     } else if (i ===12){
         hours = i + " o'clock";
     }

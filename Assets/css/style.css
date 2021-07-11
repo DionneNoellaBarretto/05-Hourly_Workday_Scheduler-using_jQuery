@@ -113,6 +113,8 @@ em{
   color: var(--white-color);
 }
 
+
+
 /* Delete Button */
 .erase {
   border-left: 1px solid black;
@@ -164,6 +166,7 @@ em{
   }
   .hour {
     margin-right: 1%;
+    margin-bottom: 1%;
     font-size: 14px;
     font-weight: bold;
     border: 2px dashed var(--smaller-color-text);
