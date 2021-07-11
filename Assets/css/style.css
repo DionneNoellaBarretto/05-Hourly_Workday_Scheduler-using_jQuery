@@ -22,6 +22,7 @@
   --del-button-desktop:#751717;
   --del-button-tablet:#717fcc;
   --del-button-mobile:#da0dec;
+  --schedule-button: lemonchiffon;
 }
 
 /* element selectors */
@@ -49,6 +50,20 @@ em{
 
 
 /* class selectors */
+.btn {
+  border: none;
+    background-color: var(--schedule-button);
+    border-radius: 25px;
+    box-shadow: 0px 2px 8px 0px rgb(0 0 0 / 10%);
+    color: var(--black-color);
+    display: inline-block;
+    font-size: 22px;
+    line-height: 22px;
+    margin: 16px 16px 16px 20px;
+    padding: 14px 34px;
+    text-align: center;
+    cursor: pointer;
+}
 /* Time Blocks */
 .row {
   white-space: pre-wrap;
@@ -147,6 +162,11 @@ em{
     font-size: 18px;
   }
 
+  .btn {
+    font-size: 1rem;
+    margin: 16px 0px 0px 0px;
+    padding: 10px 15px;
+}
 
   .row {
     height: auto;
@@ -216,6 +236,9 @@ em{
   h1{
     font-size: 16px;
   }
+  .btn {
+    font-size: 0.8rem;
+}
   .row {
     height: auto;
     margin-left: 2%;
