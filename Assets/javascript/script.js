@@ -14,6 +14,7 @@ schedule.addEventListener("click", scheduleDay);
 
 // request user for start and end time
 function scheduleDay() { 
+    
 var startHour = 0;
 startHour = prompt ("What hour do you start your day? \n\n Select a number between 1 and 24");
 if (startHour <1  || startHour > 24 || isNaN(startHour)) {
@@ -22,27 +23,32 @@ if (startHour <1  || startHour > 24 || isNaN(startHour)) {
 } else if (startHour >=1 && startHour < 12)
     {
 alert(`You start your day at ${startHour} am!`);
-    } else if (startHour === 12){
-        alert(`You start your day at ${startHour} o'clock'!`);
-    } else {
+    } else if (startHour >= 13){
         alert(`You start your day at ${startHour}:00 hours in the evening!`);
+
+    } else {
+        alert(`You start your day at ${startHour} o'clock'!`);
     }
 
-    // creates time block in the div container portion of the html file for a standard work hour slot of 8 hours depending on the start time of the user)
-for (var i = startHour; i<= (Number(startHour)+8); i++) {
+    // creates time block in the div container portion of the html file for a standard work hour slot of 8 hours (+1 hour lunch break) depending on the start time of the user)
+for (var i = startHour; i<= (Number(startHour)+9); i++) {
   //  console.log(i, Number(startHour));
     var row = $('<div class="row">');
+    // bootstrap grid system concept for sizing the widths : ref --> https://www.w3schools.com/bootstrap/bootstrap_grid_system.asp
     var hour = $('<div class="col-md-1 hour">' + hourReading(i) + '</div>');
-    var todoText = $('<textarea class="todo col-md-9" id=' + i + '></textarea>');
-    var delBtn = $('<button class="col-md-1 btn delBtn d-flex justify-content-center align-items-center"><i class="fas fa-trash-alt"></i></button>');
-    var saveBtn = $('<button class="col-md-1 btn saveBtn d-flex justify-content-center align-items-center"><i class="fas fa-save"></i></button>');
-   // joins up all the divs to form a schedule for the user
-   row.append(hour, todoText, delBtn, saveBtn);
+    var userText = $('<textarea class="todo col-md-8" id=' + i + '></textarea>');
+    var saveBtn = $('<button class="col-md-1 btn save d-flex justify-content-center align-items-center"><i class="fas fa-save"></i></button>');
+    var delBtn = $('<button class="col-md-1 btn erase d-flex justify-content-center align-items-center"><i class="fas fa-trash-alt"></i></button>');
+   // joins up all the sections defined above to form a schedule for the user in this particular order
+   row.append(delBtn, hour, userText, saveBtn);
    $(".container").append(row);
    // appends the right o'clock am/pm reading by calling the hourReading function and passing it an argument of i
    hourReading(i);
    saveTasks();
 }
+    //    //need to hide the schedule your day button
+    //    document.getElementById('#schedule').style.visibility='hidden';
+
 }
 
 // Get the hour reading based on the i iteration from above and appends an am or pm depending on if the hour is before noon or after noon
@@ -51,11 +57,14 @@ function hourReading(i) {
     if (i < 12) {
         hours = i + "am";
     } else if(i > 12){
-        hours = (i-12) + "pm"
-    } else {
-        hours = i + "pm";
+        hours = (i-12) + "pm";
+//   && i <=17)  } else if (i > 17 && i <24){
+// hours = i + "am";
+    } else{
+        hours = i + " o'Clock";
     }
     return hours;
+    
 } 
 
 
@@ -94,11 +103,11 @@ $(".delBtn").click(function () {
 });
 
 
-// Compare the current hour with each of the timeblock's hours
-$(".col-md-9").each(function () {
+// Compare the current hour with each of the time block's hours
+$(".col-md-8").each(function () {
     var dataTime = $(this).attr("id");
     var dataNum = parseInt(dataTime);
-
+console.log(dataNum, dataTime)
     // assign colors based on time
     if (hourDisplayed < dataNum) {
         $(this).addClass("future");

@@ -1,28 +1,21 @@
 /* color variables*/
 :root {
   --white-color: white;
-  --tablet-color-text: rgb(39, 36, 202);
-  --mobile-color-text: rgb(87, 87, 86);
+  --smaller-color-text: rgb(87, 87, 86);
   --black-color: black;
-  --tablet-color-text: rgb(27, 118, 146);
-  --mobile-color-text: rgb(189, 8, 189);
+  --smaller-color-text: rgb(211, 106, 9);
   --green-future-background-color: #77dd77;
-  --green-tablet-background-color: #93e093;
-  --green-mobile-background-color: #a8dfa8;
+  --green-smaller-background-color: #a8dfa8;
   --red-present-background-color: #ff6961;
-  --red-tablet-background-color: #f7837d;
-  --red-mobile-background-color: #f5c0bd;
+  --red-smaller-background-color: #f5c0bd;
   --grey-past-background-color: #d3d3d3;
-  --grey-tablet-background-color: #c2c1c1;
-  --grey-mobile-background-color: #f1eded;
-  --save-button-background:#64b3c5;
-  --save-button-desktop:#086c83;
-  --save-button-tablet:#0d1699;
-  --save-button-mobile:#771fc9;
+  --grey-smaller-background-color: #f1eded;
+  --save-button-background:#2b662e;
+  --save-button-desktop:#27e715;
+  --save-button-smaller:#5da876;
   --del-button-desktop:#751717;
-  --del-button-tablet:#717fcc;
-  --del-button-mobile:#da0dec;
-  --schedule-button: lemonchiffon;
+  --del-button-smaller:#ca4915;
+  --schedule-button: rgb(250, 243, 183);
 }
 
 /* element selectors */
@@ -34,10 +27,10 @@ body {
 
 textarea {
   background: transparent;
-  border: none;
+  border-radius: 10px;
   resize: none;
   color: var(--black-color);
-  border-left: 1px solid var(--black-color);
+  border: 1px double var(--black-color);
   padding: 10px;
 }
 
@@ -50,10 +43,12 @@ em{
 
 
 /* class selectors */
+
+
 .btn {
   border: none;
     background-color: var(--schedule-button);
-    border-radius: 25px;
+    border-radius: 10px;
     box-shadow: 0px 2px 8px 0px rgb(0 0 0 / 10%);
     color: var(--black-color);
     display: inline-block;
@@ -119,19 +114,19 @@ em{
 }
 
 /* Delete Button */
-.delBtn {
+.erase {
   border-left: 1px solid black;
   background-color: rgb(193, 91, 84);
   color: var(--del-button-desktop);
 }
-.delBtn i:hover {
+.erase i:hover {
   font-size: 30px;
     /* allows for gradual zooming when icon is hovered upon for 0.1s*/
   transition: all .1s ease-in-out;
 }
 
 /* Save Button */
-.saveBtn {
+.save {
   border-left: 1px solid var(--black-color);
   border-top-right-radius: 15px;
   border-bottom-right-radius: 15px;
@@ -139,92 +134,14 @@ em{
   color: var(--save-button-desktop);
 }
 
-.saveBtn i:hover {
+.save i:hover {
   font-size: 30px;
   /* allows for gradual zooming when icon is hovered upon for a 0.1s*/
   transition: all 0.1s ease-in-out;
 }
 
-/* media queries for tablet and mobile screens */
-/* Tablets responsive ui */
+/* media query for smaller screens */
 @media screen and (max-width: 992px) {
-
-  body {
-    font-size: 14px;
-    line-height: 0.8;
-  }
-
-  p{
-    font-size: 12px;
-  }
-
-  h1{
-    font-size: 18px;
-  }
-
-  .btn {
-    font-size: 1rem;
-    margin: 16px 0px 0px 0px;
-    padding: 10px 15px;
-}
-
-  .row {
-    height: auto;
-    margin-left: 3%;
-    margin-right: 3%;
-    border-top: var(--tablet-color-text);
-  }
-  .hour {
-    margin-top: 3%;
-    padding: 7px 7px;
-    font-size: 12px;
-    font-weight: bolder;
-    border: none;
-    border: 2px solid var(--tablet-color-text);
-    border-radius: 10%;
-    background-color: var(--grey-color-text-tablet);
-    color: var( --black-color);
-  }
-
-  .delBtn {
-    border-left: none;
-    background-color: var(--del-button-tablet);
-    color: var(--del-button-desktop);
-    
-  }
-  .saveBtn {
-    border-top-right-radius: .45rem;
-    border-bottom-right-radius: .45rem;
-    border-left: none;
-    color: var(--save-button-tablet);
-  }
-
-  .jumbotron {
-    color: var(--tablet-color-text);
-    border-bottom: 12px solid ;
-  }
-
-  /* colors the background of events from the past grey ( based on the current time ) */
-  .past {
-    background-color: var(--grey-tablet-background-color);
-    color: var(--tablet-color-text);
-  }
-  /* colors the background of events from the present red ( based on the current time ) */
-  
-  .present {
-    background-color: var(--red-tablet-background-color);
-    color: var(--tablet-color-text);
-  }
-  
-  /* colors the background of events from the future green ( based on the current time ) */
-  .future {
-    background-color: var(--green-tablet-background-color);
-    color: var(--tablet-color-text);
-  }
-  
-}
-/* Cellphones responsive ui */
-@media screen and (max-width: 768px) {
   body {
     font-size: 12px;
     line-height: 0.6;
@@ -234,62 +151,62 @@ em{
   }
 
   h1{
-    font-size: 16px;
+    font-size: 14px;
   }
   .btn {
     font-size: 0.8rem;
 }
   .row {
     height: auto;
-    margin-left: 2%;
-    margin-right: 2%;
-    border-top: var(--mobile-color-text);
+    margin-left: 1%;
+    margin-right: 1%;
+    border-top: var(--smaller-color-text);
   }
   .hour {
-    margin-top: 2%;
+    margin-top: 1%;
     padding-bottom: 5px;
     font-size: 20px;
     font-weight: bold;
     border: none;
-    border-bottom: 1px solid var(--mobile-color-text);
-    background-color: var(--grey-color-text-mobile);
+    border-bottom: 1px solid var(--smaller-color-text);
+    background-color: var(--grey-color-text-smaller);
     color: var( --black-color);
   }
 
-  .delBtn {
+  .erase {
     border-left: none;
-    background-color: var(--del-button-mobile);
+    background-color: var(--del-button-smaller);
     color: var(--del-button-desktop);
     
   }
-  .saveBtn {
+  .save {
     border-top-right-radius: .25rem;
     border-bottom-right-radius: .25rem;
     border-left: none;
-    color: var(--save-button-mobile);
+    color: var(--save-button-smaller);
   }
 
   .jumbotron {
-    color: var(--mobile-color-text);
+    color: var(--smaller-color-text);
     border-bottom: 10px solid ;
   }
 
   /* colors the background of events from the past grey ( based on the current time ) */
   .past {
-    background-color: var(--grey-mobile-background-color);
-    color: var(--mobile-color-text);
+    background-color: var(--grey-smaller-background-color);
+    color: var(--smaller-color-text);
   }
   /* colors the background of events from the present red ( based on the current time ) */
   
   .present {
-    background-color: var(--red-mobile-background-color);
-    color: var(--mobile-color-text);
+    background-color: var(--red-smaller-background-color);
+    color: var(--smaller-color-text);
   }
   
   /* colors the background of events from the future green ( based on the current time ) */
   .future {
-    background-color: var(--green-mobile-background-color);
-    color: var(--mobile-color-text);
+    background-color: var(--green-smaller-background-color);
+    color: var(--smaller-color-text);
   }
   
 }
