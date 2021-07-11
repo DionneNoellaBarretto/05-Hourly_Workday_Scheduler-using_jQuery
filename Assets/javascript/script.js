@@ -56,7 +56,7 @@ for (var i = startHour; i<= (Number(startHour)+9); i++) {
 
    // appends the right o'clock am/pm reading by calling the hourReading function and passing it an argument of i
    hourReading(i);
-//    also initializes the location of text tobe saved in browser local storage
+//    also initializes the location of text to be saved in browser local storage
    saveTasks();
 }
 
@@ -114,13 +114,13 @@ $(".delBtn").click(function () {
 
 // Compare current hour with each of the time block's hours
 $(".col-md-7").each(function () {
-    var dataTime = $(this).attr("id");
-    var dataNum = parseInt(dataTime);
-console.log(dataNum, dataTime);
+    var time = $(this).attr("id");
+    var number = parseInt(time);
+console.log(number, time);
     // assign colors based on time
     if (hourDisplayed < hour) {
         $(this).addClass("future");
-    } else if (hour == dataNum) {
+    } else if (hour == number) {
         $(this).addClass("present");
     } else {
         $(this).addClass("past");
