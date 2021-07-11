@@ -1,21 +1,23 @@
 /*to do's 
 ✅a) need to add a redo schedule and a clear all text buttons
 b) see if the hours can be fixed when day starts in the evening
-c) fix the color for present/future/past
+✅  c) fix the color for present/future/past
 d) add background image
 ✅ e) scale for table screen (intermediate)
 f) add coffee  icon up top
 g) hide the schedule your workday button once its clicked
 ✅ h) text area placeholder 
+i) change the col size when using smaller screens  (https://www.geeksforgeeks.org/how-to-change-column-to-row-on-small-display-in-bootstrap-4/)
 */
 
 // returns the hour reading from the current moment in time - example: 18 for 18:XX hours, 2 for 2:xx hours
 var hourDisplayed = moment().format('H');
-console.log(hourDisplayed);
+// console.log(hourDisplayed);
+
 // Add current date to the top of the page as defined here https://momentjs.com/
-// $("#currentDay").text(moment().format('MMMM Do YYYY, h:mm:ss a'));  // Example : July 10th 2021, 6:55:40 pm
 $("#currentDay").text(moment().format('dddd, MMMM Do, YYYY' + " @ " + 'HH:mm:ss'));
- // mapping the schedule your workday button with and identifier
+ 
+// mapping the schedule your workday and reschedule button with an identifier
 var schedule = document.querySelector("#schedule");
 var reschedule = document.querySelector("#reschedule");
 // console.log(schedule);
@@ -46,18 +48,36 @@ for (var i = startHour; i<= (Number(startHour)+9); i++) {
     var row = $('<div class="row">');
     // bootstrap grid system concept for sizing the widths : ref --> https://www.w3schools.com/bootstrap/bootstrap_grid_system.asp
     var hour = $('<div class="col-md-1 hour">' + hourReading(i) + '</div>');
-// learnt how to add a text area placeholder https://www.w3schools.com/tags/att_textarea_placeholder.asp
-    var userText = $('<textarea placeholder= "Enter task here" class="todo col-md-7" id=' + i + '></textarea>');
+console.log(hour);
+    // learnt how to add a text area placeholder https://www.w3schools.com/tags/att_textarea_placeholder.asp
+    var userText = $('<textarea placeholder= "Enter task here" class="todo col-md-8" id=' + i + '></textarea>');
+    // flex box container concept https://getbootstrap.com/docs/4.4/utilities/flex/
     var saveBtn = $('<button class="col-md-1 btn save d-flex justify-content-center align-items-center"><i class="fas fa-save"></i></button>');
     var delBtn = $('<button class="col-md-1 btn erase d-flex justify-content-center align-items-center"><i class="fas fa-trash-alt"></i></button>');
    // joins up all the sections defined above to form a schedule for the user in this particular order
-   row.append(hour, userText, saveBtn,delBtn);
+   row.append(delBtn, hour, userText, saveBtn);
+   // places all these rows in the container class section of the html file
    $(".container").append(row);
-
+   
    // appends the right o'clock am/pm reading by calling the hourReading function and passing it an argument of i
    hourReading(i);
-//    also initializes the location of text to be saved in browser local storage
+//also initializes the location of text to be saved in browser local storage
    saveTasks();
+
+   // Compare current hour with each of the time block's hours
+$(".col-md-8").each(function () {
+    var time = $(this).attr("id");
+    var number = parseInt(time);
+console.log(number,hourDisplayed);
+    // assign color classes with a space before appending to existing class list based on time comparison to the displayed current hour
+    if (number < hourDisplayed) {
+        $(this).addClass(" past");
+    } else if (hourDisplayed == number) {
+        $(this).addClass(" present");
+    } else {
+        $(this).addClass(" future");
+    }
+});
 }
 }
 
@@ -123,23 +143,4 @@ $(".delBtn").click(function () {
 });
 
 
-// Compare current hour with each of the time block's hours
-$(".col-md-7").each(function () {
-    var time = $(this).attr("id");
-    var number = parseInt(time);
-console.log(number, time);
-    // assign colors based on time
-    if (hourDisplayed < hour) {
-        $(this).addClass("future");
-    } else if (hour == number) {
-        $(this).addClass("present");
-    } else {
-        $(this).addClass("past");
-    }
-});
-
-  
-        
-        
-    
 

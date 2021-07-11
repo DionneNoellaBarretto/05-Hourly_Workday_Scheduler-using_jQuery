@@ -1,21 +1,20 @@
 /* color variables*/
 :root {
   --white-color: white;
-  --smaller-color-text: rgb(87, 87, 86);
   --black-color: black;
-  --smaller-color-text: rgb(211, 106, 9);
+  --smaller-color-text: rgb(69, 17, 94);
   --green-future-background-color: #77dd77;
   --green-smaller-background-color: #a8dfa8;
   --red-present-background-color: #ff6961;
-  --red-smaller-background-color: #f5c0bd;
-  --grey-past-background-color: #d3d3d3;
-  --grey-smaller-background-color: #f1eded;
-  --save-button-background:#2b662e;
-  --save-button-desktop:#27e715;
-  --save-button-smaller:#5da876;
-  --del-button-desktop:#751717;
-  --del-button-smaller:#ca4915;
-  --schedule-button: rgb(250, 243, 183);
+  --red-smaller-background-color: #f5908b;
+  --grey-past-background-color: #bdb8b8;
+  --grey-smaller-background-color: #dbd6d6;
+  --save-button-background:#5f78e6;
+  --save-button-desktop:#1708f0;
+  --save-button-smaller:#434cc4;
+  --del-button-desktop:#797676 ;
+  --del-button-smaller:#504f4f;
+  --schedule-button: rgb(250, 241, 159);
 }
 
 /* element selectors */
@@ -61,8 +60,9 @@ em{
 }
 /* Time Blocks */
 .row {
+  /* https://developer.mozilla.org/en-US/docs/Web/CSS/white-space: with pre-wrap Sequences of white space are preserved. Lines are broken at newline characters, at <br>, and as necessary to fill line boxes. */
   white-space: pre-wrap;
-  height: 80px;
+  height: 90px;
   border-top: 1px solid var( --white-color);
   text-align: center;
   border-radius: 15px;
@@ -113,13 +113,11 @@ em{
   color: var(--white-color);
 }
 
-
-
 /* Delete Button */
 .erase {
-  border-left: 1px solid black;
-  background-color: rgb(193, 91, 84);
-  color: var(--del-button-desktop);
+  border-right: 1px solid black;
+  background-color: var(--del-button-desktop);
+  color: var(--del-button-smaller);
 }
 .erase i:hover {
   font-size: 30px;
@@ -129,7 +127,7 @@ em{
 
 /* Save Button */
 .save {
-  border-left: 1px solid var(--black-color);
+  border: 1px solid var(--black-color);
   border-top-right-radius: 15px;
   border-bottom-right-radius: 15px;
   background-color: var(--save-button-background);
@@ -166,16 +164,17 @@ em{
   }
   .hour {
     margin-right: 1%;
-    margin-bottom: 1%;
+    padding: 5px 5px;
     font-size: 14px;
     font-weight: bold;
     border: 2px dashed var(--smaller-color-text);
     background-color: var(--grey-color-text-smaller);
     color: var(--smaller-color-text);
+    border-radius: .25rem;
   }
 
   .erase {
-    border-left: none;
+    border-bottom: 1px solid var(--black-color);
     background-color: var(--del-button-smaller);
     color: var(--del-button-desktop);
     
@@ -183,7 +182,7 @@ em{
   .save {
     border-top-right-radius: .25rem;
     border-bottom-right-radius: .25rem;
-    border-left: none;
+    border-top: 1px solid var(--black-color);
     color: var(--save-button-smaller);
   }
 
