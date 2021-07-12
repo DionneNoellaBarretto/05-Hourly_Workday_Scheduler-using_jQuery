@@ -1,8 +1,9 @@
 /* color variables*/
 :root {
-  --white-color: white;
-  --black-color: black;
-  --smaller-color-text: rgb(69, 17, 94);
+  --white: white;
+  --black: black;
+  --deep_purple: rgb(69, 17, 94);
+  --orange : rgb(245, 136, 94);
   --green-future-background-color: #77dd77;
   --green-smaller-background-color: #a8dfa8;
   --red-present-background-color: #ff6961;
@@ -11,8 +12,9 @@
   --grey-smaller-background-color: #dbd6d6;
   --save-button-background:#5f78e6;
   --save-button-desktop:#1708f0;
-  --save-button-smaller:#434cc4;
-  --schedule-button: rgb(250, 241, 159);
+  --save-button-small:#e9bcbc;
+  --save-button-smaller:#bcbfe9;
+  --lemon_yellow: rgb(250, 241, 159);
 }
 
 /* element selectors */
@@ -26,8 +28,8 @@ textarea {
   background: transparent;
   border-radius: 10px;
   resize: none;
-  color: var(--black-color);
-  border: 1px double var(--black-color);
+  color: var(--black);
+  border: 1px double var(--black);
   padding: 10px;
 }
 
@@ -52,10 +54,10 @@ font-weight: bolder;
 
 .btn {
   border: none;
-  background-color: var(--schedule-button);
+  background-color: var(--lemon_yellow);
   border-radius: 10px;
   box-shadow: 0px 2px 8px 0px rgb(0 0 0 / 10%);
-  color: var(--black-color);
+  color: var(--black);
   display: inline-block;
   font-size: 22px;
   line-height: 22px;
@@ -69,14 +71,14 @@ font-weight: bolder;
   /* https://developer.mozilla.org/en-US/docs/Web/CSS/white-space: with pre-wrap Sequences of white space are preserved. Lines are broken at newline characters, at <br>, and as necessary to fill line boxes. */
   white-space: pre-wrap;
   height: 90px;
-  border-top: 1px solid var( --white-color);
+  border-top: 1px solid var( --white);
   text-align: center;
   border-radius: 15px;
 }
 .hour {
-  background-color: var(--schedule-button);
-  color: var(--black-color);
-  border: 2px dashed var(--black-color);
+  background-color: var(--lemon_yellow);
+  color: var(--black);
+  border: 2px dashed var(--black);
   font-size: 20px;
   text-align: center;
   font-weight: bolder;
@@ -87,9 +89,9 @@ font-weight: bolder;
   text-align: center;
   background-color: transparent;
   /* background-image: url("./Assets/images/ConfettiDesktopBackground.png"); */
-  color: var(--black-color);
+  color: var(--black);
   border-radius: 0;
-  border-bottom: 10px solid var(--black-color);
+  border-bottom: 10px solid var(--black);
 }
 
 .description {
@@ -105,25 +107,25 @@ font-weight: bolder;
 /* colors the background of events from the past grey ( based on the current time ) */
 .past {
   background-color: var(--grey-past-background-color);
-  color: var(--white-color);
+  color: var(--white);
 }
 /* colors the background of events from the present red ( based on the current time ) */
 
 .present {
   background-color: var(--red-present-background-color);
-  color: var(--white-color);
+  color: var(--white);
 }
 
 /* colors the background of events from the future green ( based on the current time ) */
 .future {
   background-color: var(--green-future-background-color);
-  color: var(--white-color);
+  color: var(--white);
 }
 
 
 /* Save Button */
 .save {
-  border: 1px solid var(--black-color);
+  border: 1px solid var(--black);
   border-top-right-radius: 15px;
   border-bottom-right-radius: 15px;
   background-color: var(--save-button-background);
@@ -137,14 +139,82 @@ font-weight: bolder;
 }
 
 /* media query for smaller screens */
-@media screen and (max-width: 862px) {
+
+@media screen and (max-width: 992px) {
+  body {
+    font-size: 14px;
+    line-height: 0.9;
+  }
+  .lead{
+    font-size: 18px;
+    color: var(--orange);
+    font-style: bolder;
+    text-decoration: rgb(236, 102, 164) dashed underline;
+  }
+
+.display-3{
+    font-size: 40px;
+    font-weight: bolder;
+  }
+  .btn {
+    font-size: 1rem;
+}
+  .row {
+    height: 90%;
+    margin-left: 2%;
+    margin-right: 1.6%;
+    border-top: var(--orange);
+  }
+  .hour {
+    margin-right: 1%;
+    padding: 4px 4px;
+    font-size: 14px;
+    font-weight: bolder;
+    border: 1.7px dotted var(--orange);
+    background-color: var(--white-text);
+    color: var(--orange);
+    border-radius: .40rem;
+  }
+
+  .save {
+    border-top-right-radius: .40rem;
+    border-bottom-right-radius: .40rem;
+    border-top: 1.7px solid var(--black);
+    color: var(--save-button-small);
+  }
+
+  .jumbotron {
+    color: var(--orange);
+    border-bottom: 10px rgb(236, 102, 164) dashed;
+    }
+
+  /* colors the background of events from the past grey ( based on the current time ) */
+  .past {
+    background-color: var(--grey-smaller-background-color);
+    color: var(--orange);
+  }
+  /* colors the background of events from the present red ( based on the current time ) */
+  
+  .present {
+    background-color: var(--red-smaller-background-color);
+    color: var(--orange);
+  }
+  
+  /* colors the background of events from the future green ( based on the current time ) */
+  .future {
+    background-color: var(--green-smaller-background-color);
+    color: var(--orange);
+  }
+  
+}
+@media screen and (max-width: 762px) {
   body {
     font-size: 12px;
     line-height: 0.8;
   }
   .lead{
     font-size: 15px;
-    color: var(--smaller-color-text);
+    color: var(--deep_purple);
     font-style: bolder;
       text-decoration:var(--red-present-background-color) dashed underline;
   }
@@ -160,47 +230,47 @@ font-weight: bolder;
     height: auto;
     margin-left: 1%;
     margin-right: 1%;
-    border-top: var(--smaller-color-text);
+    border-top: var(--deep_purple);
   }
   .hour {
     margin-right: 1%;
     padding: 5px 5px;
     font-size: 14px;
     font-weight: bold;
-    border: 2px dashed var(--smaller-color-text);
+    border: 2px dashed var(--deep_purple);
     background-color: var(--white-text);
-    color: var(--smaller-color-text);
+    color: var(--deep_purple);
     border-radius: .25rem;
   }
 
   .save {
     border-top-right-radius: .25rem;
     border-bottom-right-radius: .25rem;
-    border-top: 1px solid var(--black-color);
+    border-top: 1px solid var(--black);
     color: var(--save-button-smaller);
   }
 
   .jumbotron {
-    color: var(--smaller-color-text);
-    border-bottom: 10px solid ;
+    color: var(--deep_purple);
+    border-bottom: 10px dotted var(--deep_purple) ;
   }
 
   /* colors the background of events from the past grey ( based on the current time ) */
   .past {
     background-color: var(--grey-smaller-background-color);
-    color: var(--smaller-color-text);
+    color: var(--deep_purple);
   }
   /* colors the background of events from the present red ( based on the current time ) */
   
   .present {
     background-color: var(--red-smaller-background-color);
-    color: var(--smaller-color-text);
+    color: var(--deep_purple);
   }
   
   /* colors the background of events from the future green ( based on the current time ) */
   .future {
     background-color: var(--green-smaller-background-color);
-    color: var(--smaller-color-text);
+    color: var(--deep_purple);
   }
   
 }
