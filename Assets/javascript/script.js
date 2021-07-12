@@ -78,7 +78,7 @@ if (i < 12) {
     hour.text(i + " :00 AM");
 } else if(i > 12){
     hour.text((i-12) + " :00 PM");
-} else if ((i == 12) || (i ==24)){
+} else if ((i == 12 || i ==24)){
     hour.text(i + " o'Clock");
 }
     // learnt how to add a text area placeholder https://www.w3schools.com/tags/att_textarea_placeholder.asp
