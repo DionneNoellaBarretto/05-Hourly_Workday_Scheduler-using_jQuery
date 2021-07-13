@@ -51,10 +51,20 @@ footer{
   display: none;
 }
 
-.lead {
-font-weight: bold;
+#currentDay{
+font-weight: bolder;
 font-size: 25px;
-background: -webkit-linear-gradient(rgb(248, 237, 84),rgb(238, 47, 222));
+background: -webkit-linear-gradient(rgb(248, 110, 67),rgb(248, 237, 84));
+background-clip: inherit;
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+padding: 7px;
+}
+
+.line {
+font-weight: bold;
+font-size: 20px;
+background: -webkit-linear-gradient(rgb(248, 237, 84),rgb(240, 95, 228));
 background-clip: inherit;
 -webkit-background-clip: text;
 -webkit-text-fill-color: transparent;

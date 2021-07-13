@@ -1,5 +1,5 @@
 /* pending to do's 
-✅a) need to add the schedule and a back button
+✅a) need to add the schedule for user input on start time and a back button
 b) see if the hours can be fixed when day starts in the evening 
 c) fix the color for present/future/past to work no matter say if user inputs 7am when actual time is 4pm
 ✅d) add background image(s)
@@ -9,16 +9,19 @@ c) fix the color for present/future/past to work no matter say if user inputs 7a
 ✅ h) text area placeholder 
 ✅ i) auto change the col size when using smaller screens  (https://www.geeksforgeeks.org/how-to-change-column-to-row-on-small-display-in-bootstrap-4/)
 j) disable input to time blocks that are past
-k) need to save to local storage and delete (need to make the buttons work)
+k) need to save to local storage and delete as well (need to make the buttons work)
 */
 
 // back button being selected by id not class!
 var back = $('#back');
-// Immediately hide the back button
-back.hide();
-var instructional_alert = $(".alert");
+var instructional_alert = $(".alert-info");
 var footerHide = $(".footer");
 
+
+
+
+// Immediately hide the back button
+back.hide();
 
 // returns the hour reading from the current moment in time - example: 18 for 18:XX hours, 2 for 2:xx hours
 var hourDisplayed = moment().format('H');
