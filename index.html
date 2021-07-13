@@ -14,34 +14,52 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
     integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
   <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet" />
-  <!-- link to the stylesheet -->
+  <!-- link to custom stylesheet -->
   <link rel="stylesheet" href="./Assets/css/style.css" />
   <!-- a title for the website -->
   <title>Work Day Scheduler</title>
 </head>
 
-<body>
+<!-- embedded styling example for practice-->
+<style>
+  /* element selectors */
+  header{
+    /* https://www.w3schools.com/html/html_images_background.asp , https://www.w3schools.com/html/html_images_background.asp*/
+  background-image: url('./Assets/images/bg2.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+/* opacity: 0.3; - https://coder-coder.com/background-image-opacity/ */
+  }
 
+  body{
+    background-image: url('./Assets/images/ConfettiDesktopBackground.png');
+  background-repeat: repeat;
+  background-size: cover; 
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
+  line-height: 18px;
+  }
+</style>
+
+<body>  
   <!-- https://getbootstrap.com/docs/4.5/components/jumbotron/ -->
   <header class="jumbotron">
+        <!-- https://getbootstrap.com/docs/4.5/components/alerts/ -->
+        <div class="alert alert-info" role="alert" title="Instructions">
+          <strong>Click the 'Schedule_Your_Workday' button below to begin!</strong>
+        </div>
     <!-- header for the website -->
     <h1 class="display-3">Work Day Scheduler</h1>
     <!-- a quick app description -->
     <p class="lead line">A simple calendar app for scheduling your work day</p>
-    <br>
-
-    <!-- https://getbootstrap.com/docs/4.5/components/alerts/ -->
-    <div class="alert alert-info" role="alert">
-      <strong>Click the 'Schedule_Your_Workday' button below to begin!</strong>
-    </div>
-       <!-- https://fontawesome.com/v5.15/icons/redo?style=solid -->
-       <!-- <br> <button id="scheduleReset" class="btn hide"><i class="btn fas fa-redo hide"> Reset Schedule</i></button> -->
-       <!-- onclick hides this button but without executing its function https://stackoverflow.com/questions/16903605/hide-button-after-click-with-existing-form-on-page -->
+    
+    <!-- onclick hides this button but without executing its function https://stackoverflow.com/questions/16903605/hide-button-after-click-with-existing-form-on-page -->
     <!--  icon: https://fontawesome.com/v5.15/icons/hand-point-right?style=regular -->
     <button id="schedule" class="btn" onclick="this.style.display = 'none'"><i
-        class="far fa-hand-point-right"></i> Schedule_Your_Workday</button>
-    <!-- back btn -->
-    <h3><a id="back" href="./index.html">&larr; Go Back</a> </h3>
+      class="far fa-hand-point-right"></i> Schedule_Your_Workday</button>
+  
+        <!-- back btn with inline styling example-->
+    <h3><a id="back" href="./index.html" style="color:white"> &larr; Go Back</a> </h3>
       <br>
       <!-- placeholder for the currentDay and time to be displayed -->
       <strong>
@@ -49,6 +67,7 @@
       </strong>
       <br>
       </header>
+
       <!-- Hourly time blocks go here -->
       <div class="container"
         title=" 'Past' times are greyed out, 'Present' time is highlighted in red and 'Future' times are highlighted in green">
@@ -57,8 +76,8 @@
 
 <!-- a page footer with a last modified timestamp using inline javascript-->
 
-<footer>
-  <em>Copyrights &copy; DNB 2021 </em>
+<footer class="footer text-muted hide">
+  <em >Copyrights &copy; DNB 2021 </em>
   <br>
   <br>
   <!-- leaving a gap here to accommodate spacing on mobile screens -->

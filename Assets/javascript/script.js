@@ -1,10 +1,10 @@
-/*to do's 
+/* pending to do's 
 ✅a) need to add the schedule and a back button
 b) see if the hours can be fixed when day starts in the evening 
 c) fix the color for present/future/past to work no matter say if user inputs 7am when actual time is 4pm
-d) add background image
+✅d) add background image(s)
 ✅ e) scale for table screen (intermediate)
-f) add coffee  icon up top
+✅f) add instructions for starting the app
 ✅ g) hide the schedule your workday button once its clicked
 ✅ h) text area placeholder 
 ✅ i) auto change the col size when using smaller screens  (https://www.geeksforgeeks.org/how-to-change-column-to-row-on-small-display-in-bootstrap-4/)
@@ -14,24 +14,11 @@ k) need to save to local storage and delete (need to make the buttons work)
 
 // back button being selected by id not class!
 var back = $('#back');
-// Immediately hide the back/scheduleReset button
+// Immediately hide the back button
 back.hide();
-// scheduleReset.hide();
-var instructional_alert = $(".alert")
+var instructional_alert = $(".alert");
+var footerHide = $(".footer");
 
-// //reset existing reschedule 
-// var scheduleReset = $('#scheduleReset');
-// //click event listener
-// scheduleReset.on ("click",resetSchedule);
-// //function assigned to a variable
-// var resetSchedule = function(event){
-//     event.preventDefault();
-// if (!userText){
-//     console.log("There's nothing to clear, You need to fill up your day's schedule!");
-//     return;
-// }
-// userText.val('');
-// };
 
 // returns the hour reading from the current moment in time - example: 18 for 18:XX hours, 2 for 2:xx hours
 var hourDisplayed = moment().format('H');
@@ -67,8 +54,8 @@ function scheduleDay() {
     var startHour = 0;
     startHour = prompt ("What hour do you start your day? \n\n Select a number between 1 and 24");
     if (startHour <1  || startHour > 24 || isNaN(startHour)) {
-        alert(`Invalid Entry!! \n\n Please click OK and click on 'Schedule_Your_Workday' button again to enter a valid number between 1 and 24 for the Work Day Scheduler to create appropriate hourly slots!`);
-        return;
+        alert(`Invalid Entry!! \n\n Please click OK and proceed to enter a valid number between 1 and 24 for the Work Day Scheduler to create appropriate hourly slots!`);
+        return (scheduleDay()); // looping to ensure user enters a valid number and proceeds
     } else if (startHour >=1 && startHour < 12)
         {
     alert(`You entered your start time as ${startHour} am!`);
@@ -123,20 +110,19 @@ if (i < hourDisplayed) {
 }
 
 // https://getbootstrap.com/docs/4.0/components/buttons/ 
-    // flex box container concept https://getbootstrap.com/docs/4.4/utilities/flex/, save icon from font awesome site https://fontawesome.com/v5.15/icons/save?style=regular , trash icon https://fontawesome.com/v5.15/icons/trash?style=solid
-    var saveBtn = $('<button id="save">').addClass(" disabled col-md-1 btn-block btn save d-flex justify-content-center align-items-center fas fa-save");
-    var delBtn = $('<button>').addClass(" disabled col-md-1 erase btn btn-block d-flex justify-content-center align-items-center fas fa-trash");
+    // flex box container concept https://getbootstrap.com/docs/4.4/utilities/flex/, save icon from font awesome site  , trash icon https://fontawesome.com/v5.15/icons/trash-alt?style=regular
+    var saveBtn = $('<button id="save">').addClass(" disabled col-md-1 btn-block btn save d-flex justify-content-center align-items-center fa fa-plus-circle");
+    var delBtn = $('<button>').addClass(" disabled col-md-1 erase btn btn-block d-flex justify-content-center align-items-center far fa-trash-alt");
    // joins up all the (sections) defined above to form a hourly schedule grid for the user in this particular order for a given row 
    row.append(hour, userText,saveBtn,delBtn);
    // places all these rows in the container class section of the html file by appending to the page
    timeBlocks.append(row);
 }
-   //displays the back/reset Schedule button once the schedule is created
+   //displays the back button once the schedule is created
    back.show();
-scheduleReset.show();
-   //hides the instructional alert up top
+   //hides the instructional alert up  and footer at the bottom
 instructional_alert.hide();
-
+footerHide.hide();
 };
 
 
