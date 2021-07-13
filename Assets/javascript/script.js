@@ -69,8 +69,7 @@ function scheduleDay() {
             alert(`You entered your start time as ${startHour} o'clock'!`);
         }
         // console.log(startHour);
-//time slot row variable that uses row class to create row in the container 
-// Change the alignment of flex item to center with justify-content-center      
+//time slot row variable that uses row class to create row in the container // Change the alignment of flex item to center with justify-content-center      
 var row = $('<div class="w-100 row justify-content-center">');
     // creates time block in the div container portion of the html file for a standard work hour slot of 8 hours (+1 hour lunch break) depending on the start time of the user)
 var timeBlocks = $('.container');

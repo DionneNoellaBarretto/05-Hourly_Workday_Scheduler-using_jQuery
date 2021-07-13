@@ -51,6 +51,7 @@ footer{
   display: none;
 }
 
+
 #currentDay{
 font-weight: bolder;
 font-size: 25px;
@@ -96,7 +97,6 @@ header .btn:hover {
   /* https://developer.mozilla.org/en-US/docs/Web/CSS/white-space: with pre-wrap Sequences of white space are preserved. Lines are broken at newline characters, at <br>, and as necessary to fill line boxes. */
   white-space: pre-wrap;
   height: 90px;
-  border-top: 1px solid var( --grey);
   text-align: center;
   border-radius: 15px;
 }
