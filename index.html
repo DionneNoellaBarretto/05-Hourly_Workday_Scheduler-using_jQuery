@@ -1,58 +1,77 @@
 <!DOCTYPE html> <!--  document type is html -->
-<html lang="en"> <!-- html element start -->
+<html lang="en">
+<!-- html element start -->
 
 <!-- meta data/ title /link definitions -->
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <!-- bootstrap link -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
-    <!-- link to custom fonts -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet"/>
-    <!-- link to the stylesheet -->
-    <link rel="stylesheet" href="./Assets/css/style.css" />
-    <!-- a title for the website -->
-    <title>Work Day Scheduler</title>
-  </head>
 
-  <body>
-    
-    <header class="jumbotron" title="Begin by clicking the 'Schedule_Your_Workday' button">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <!-- Link to Bootstrap's CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
+  <!-- link to custom fonts -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+    integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet" />
+  <!-- link to the stylesheet -->
+  <link rel="stylesheet" href="./Assets/css/style.css" />
+  <!-- a title for the website -->
+  <title>Work Day Scheduler</title>
+</head>
 
-<!-- header for the website -->
-      <h1 class="display-3">Work Day Scheduler</h1>
-      <!-- a quick app description -->
-      <p class="lead">A simple calendar app for scheduling your work day</p>
-      <br>
-      <button id="schedule" class="btn">Schedule_Your_Workday</button>
-      <!-- <button id="reschedule" class="btn hide reschedule">Reschedule_Your_Workday</button> -->
-      <!-- <button id="clear" class="btn hide clear">Clear All Entries</button> -->
+<body>
+
+  <!-- https://getbootstrap.com/docs/4.5/components/jumbotron/ -->
+  <header class="jumbotron">
+    <!-- header for the website -->
+    <h1 class="display-3">Work Day Scheduler</h1>
+    <!-- a quick app description -->
+    <p class="lead line">A simple calendar app for scheduling your work day</p>
+    <br>
+
+    <!-- https://getbootstrap.com/docs/4.5/components/alerts/ -->
+    <div class="alert alert-info" role="alert">
+      <strong>Click the 'Schedule_Your_Workday' button below to begin!</strong>
+    </div>
+       <!-- https://fontawesome.com/v5.15/icons/redo?style=solid -->
+       <!-- <br> <button id="scheduleReset" class="btn hide"><i class="btn fas fa-redo hide"> Reset Schedule</i></button> -->
+       <!-- onclick hides this button but without executing its function https://stackoverflow.com/questions/16903605/hide-button-after-click-with-existing-form-on-page -->
+    <!--  icon: https://fontawesome.com/v5.15/icons/hand-point-right?style=regular -->
+    <button id="schedule" class="btn" onclick="this.style.display = 'none'"><i
+        class="far fa-hand-point-right"></i> Schedule_Your_Workday</button>
+    <!-- back btn -->
+    <h3><a id="back" href="./index.html">&larr; Go Back</a> </h3>
       <br>
       <!-- placeholder for the currentDay and time to be displayed -->
-      <strong><p id="currentDay" class="lead"></p> </strong>
-    </header>
-    
+      <strong>
+        <p id="currentDay" class="lead"></p>
+      </strong>
+      <br>
+      </header>
       <!-- Hourly time blocks go here -->
-    <div class="container" title=" 'Past' times are greyed out, 'Present' time is highlighted in red and 'Future' times are highlighted in green"></div>
+      <div class="container"
+        title=" 'Past' times are greyed out, 'Present' time is highlighted in red and 'Future' times are highlighted in green">
+      </div>
+</body>
 
+<!-- a page footer with a last modified timestamp using inline javascript-->
+
+<footer> <em>Copyrights &copy DNB 2021 </em>
+  <br>
+  <br>
+  <!-- leaving a gap here to accommodate spacing on mobile screens -->
+  <script>
+    document.write("Last modified on: " + document.lastModified + "");
+  </script>
+</footer>
 
 <!-- the javascript portion will load last to avoid the html page from getting stuck incase the javascript calls don't render  -->
-  <!-- link to jquery -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <!-- link to moment.js for the date and time information up top -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-  <!-- link to javascript -->
+<!-- Added link to the jQuery library -->
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<!-- link to moment.js for the date and time information up top -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+<!-- link to javascript -->
 <script src="./Assets/javascript/script.js"></script>
-  </body>
-  
-  <!-- a page footer with a last modified timestamp using inline javascript ; the pre tg ensures the formatting in the index html file persists during display -->
-  <pre>
-    <footer>      Copyrights &copy DNB 2021 
-      <!-- leaving a gap here to accommodate spacing on mobile screens -->
-    <em><script>  document.write("Last modified on: " + document.lastModified + ""); </script></em>
-    </footer>
-</pre>
 
 </html>

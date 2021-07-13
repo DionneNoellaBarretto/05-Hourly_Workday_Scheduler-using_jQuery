@@ -1,20 +1,18 @@
+/* instead of using css could have used bootstraps classes/custom classes however opted for this form , for practice */
 /* color variables*/
 :root {
   --white: white;
   --black: black;
   --deep_purple: rgb(69, 17, 94);
   --orange : rgb(245, 136, 94);
-  --green-future-background-color: #77dd77;
-  --green-smaller-background-color: #a8dfa8;
-  --red-present-background-color: #ff6961;
-  --red-smaller-background-color: #f5908b;
-  --grey-past-background-color: #bdb8b8;
-  --grey-smaller-background-color: #dbd6d6;
-  --save-button-background:#5f78e6;
-  --save-button-desktop:#1708f0;
-  --save-button-small:#e9bcbc;
-  --save-button-smaller:#bcbfe9;
-  --lemon_yellow: rgb(250, 241, 159);
+  --green-future-background-color: #befabe;
+  --red-present-background-color: #f8bcb8;
+  --grey-past-background-color: #d8d7d7;
+  --save-button:#16800d;
+  --delete-button-background:#99e5f8;
+  --delete-button:#070e6b;
+  --lemon_yellow: lemonchiffon;
+  --hour-label: lavenderblush;
 }
 
 /* element selectors */
@@ -24,6 +22,7 @@ body {
   line-height: 1;
 }
 
+
 textarea {
   background: transparent;
   border-radius: 10px;
@@ -31,13 +30,19 @@ textarea {
   color: var(--black);
   border: 1px double var(--black);
   padding: 10px;
+  /* text area adjustable https://developer.mozilla.org/en-US/docs/Web/CSS/overflow*/
+  overflow: auto;
+  resize: both;
 }
 
 footer{
+  align-items:baseline;
   text-align: center;
+  font-size: 14px;
 }
-em{
-  font-size: smaller;
+
+#back, em{
+  font-size: bold;
 }
 
 
@@ -47,8 +52,8 @@ em{
   display: none;
 }
 /* wavy underline: https://developer.mozilla.org/en-US/docs/Web/CSS/text-decoration */
+
 .lead {
-  text-decoration: rgb(247, 192, 210) wavy underline;
 font-weight: bolder;
 }
 
@@ -61,10 +66,14 @@ font-weight: bolder;
   display: inline-block;
   font-size: 22px;
   line-height: 22px;
-  margin: 16px 16px 16px 20px;
-  padding: 14px 34px;
+  margin: 2px;
+  padding: 2px;
   text-align: center;
   cursor: pointer;
+}
+/* zoom in slight upon hovering over header section btn */
+header .btn:hover { 
+  transform: scale(1.1); 
 }
 /* Time Blocks */
 .row {
@@ -76,22 +85,22 @@ font-weight: bolder;
   border-radius: 15px;
 }
 .hour {
-  background-color: var(--lemon_yellow);
+  background-color: var(--hour-label);
   color: var(--black);
   border: 2px dashed var(--black);
   font-size: 20px;
   text-align: center;
   font-weight: bolder;
   border-radius: 10%;
+  overflow: auto;
 }
 
 .jumbotron {
   text-align: center;
   background-color: transparent;
-  /* background-image: url("./Assets/images/ConfettiDesktopBackground.png"); */
   color: var(--black);
   border-radius: 0;
-  border-bottom: 10px solid var(--black);
+  border-bottom: 8px dashed rgb(4, 74, 206);
 }
 
 .description {
@@ -126,151 +135,25 @@ font-weight: bolder;
 /* Save Button */
 .save {
   border: 1px solid var(--black);
-  border-top-right-radius: 15px;
-  border-bottom-right-radius: 15px;
-  background-color: var(--save-button-background);
-  color: var(--save-button-desktop);
+  background-color: var( --lemon_yellow);
+  color: var(--save-button);
 }
 
-.save i:hover {
+.save:hover {
   font-size: 30px;
   /* allows for gradual zooming when icon is hovered upon for a 0.1s*/
   transition: all 0.1s ease-in-out;
 }
 
-/* media query for smaller screens */
-
-@media screen and (max-width: 992px) {
-  body {
-    font-size: 14px;
-    line-height: 0.9;
-  }
-  .lead{
-    font-size: 18px;
-    color: var(--orange);
-    font-style: bolder;
-    text-decoration: rgb(236, 102, 164) dashed underline;
-  }
-
-.display-3{
-    font-size: 40px;
-    font-weight: bolder;
-  }
-  .btn {
-    font-size: 1rem;
+/* Delete Button */
+.erase {
+  border: 1px solid var(--black);
+  background-color: var(--delete-button-background);
+  color: var(--delete-button);
 }
-  .row {
-    height: 90%;
-    margin-left: 2%;
-    margin-right: 1.6%;
-    border-top: var(--orange);
-  }
-  .hour {
-    margin-right: 1%;
-    padding: 4px 4px;
-    font-size: 14px;
-    font-weight: bolder;
-    border: 1.7px dotted var(--orange);
-    background-color: var(--white-text);
-    color: var(--orange);
-    border-radius: .40rem;
-  }
 
-  .save {
-    border-top-right-radius: .40rem;
-    border-bottom-right-radius: .40rem;
-    border-top: 1.7px solid var(--black);
-    color: var(--save-button-small);
-  }
-
-  .jumbotron {
-    color: var(--orange);
-    border-bottom: 10px rgb(236, 102, 164) dashed;
-    }
-
-  /* colors the background of events from the past grey ( based on the current time ) */
-  .past {
-    background-color: var(--grey-smaller-background-color);
-    color: var(--orange);
-  }
-  /* colors the background of events from the present red ( based on the current time ) */
-  
-  .present {
-    background-color: var(--red-smaller-background-color);
-    color: var(--orange);
-  }
-  
-  /* colors the background of events from the future green ( based on the current time ) */
-  .future {
-    background-color: var(--green-smaller-background-color);
-    color: var(--orange);
-  }
-  
-}
-@media screen and (max-width: 762px) {
-  body {
-    font-size: 12px;
-    line-height: 0.8;
-  }
-  .lead{
-    font-size: 15px;
-    color: var(--deep_purple);
-    font-style: bolder;
-      text-decoration:var(--red-present-background-color) dashed underline;
-  }
-
-.display-3{
-    font-size: 25px;
-    font-weight: bolder;
-  }
-  .btn {
-    font-size: 0.8rem;
-}
-  .row {
-    height: auto;
-    margin-left: 1%;
-    margin-right: 1%;
-    border-top: var(--deep_purple);
-  }
-  .hour {
-    margin-right: 1%;
-    padding: 5px 5px;
-    font-size: 14px;
-    font-weight: bold;
-    border: 2px dashed var(--deep_purple);
-    background-color: var(--white-text);
-    color: var(--deep_purple);
-    border-radius: .25rem;
-  }
-
-  .save {
-    border-top-right-radius: .25rem;
-    border-bottom-right-radius: .25rem;
-    border-top: 1px solid var(--black);
-    color: var(--save-button-smaller);
-  }
-
-  .jumbotron {
-    color: var(--deep_purple);
-    border-bottom: 10px dotted var(--deep_purple) ;
-  }
-
-  /* colors the background of events from the past grey ( based on the current time ) */
-  .past {
-    background-color: var(--grey-smaller-background-color);
-    color: var(--deep_purple);
-  }
-  /* colors the background of events from the present red ( based on the current time ) */
-  
-  .present {
-    background-color: var(--red-smaller-background-color);
-    color: var(--deep_purple);
-  }
-  
-  /* colors the background of events from the future green ( based on the current time ) */
-  .future {
-    background-color: var(--green-smaller-background-color);
-    color: var(--deep_purple);
-  }
-  
+.erase:hover {
+  font-size: 30px;
+  /* allows for gradual zooming when icon is hovered upon for a 0.1s*/
+  transition: all 0.1s ease-in-out;
 }
