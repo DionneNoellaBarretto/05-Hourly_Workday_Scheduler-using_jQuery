@@ -3,7 +3,6 @@
 <!-- html element start -->
 
 <!-- meta data/ title /link definitions -->
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -18,69 +17,73 @@
   <link rel="stylesheet" href="./Assets/css/style.css" />
 
   <!-- embedded styling example for practice (https://www.tutorialrepublic.com/html-tutorial/html-styles.php#:~:text=Embedded%20style%20sheets%20are%20defined,inside%20the%20section.)-->
-<style>
-  /* element selectors */
-  header{
-    /* https://www.w3schools.com/html/html_images_background.asp , https://www.w3schools.com/html/html_images_background.asp*/
-  background-image: url('./Assets/images/bg2.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
-/* opacity: 0.3; - https://coder-coder.com/background-image-opacity/ */
-  }
+  <style>
+    /* element selectors */
+    header {
+      /* https://www.w3schools.com/html/html_images_background.asp , https://www.w3schools.com/html/html_images_background.asp*/
+      background-image: url('./Assets/images/bg2.jpg');
+      background-repeat: no-repeat;
+      background-size: cover;
+      /* opacity: 0.3; - https://coder-coder.com/background-image-opacity/ */
+    }
 
-  body{
-    background-image: url('./Assets/images/ConfettiDesktopBackground.png');
-  background-repeat: repeat;
-  background-size: cover; 
-  font-family: 'Open Sans', sans-serif;
-  font-size: 16px;
-  line-height: 18px;
-  }
-</style>
-
+    body {
+      background-image: url('./Assets/images/ConfettiDesktopBackground.png');
+      background-repeat: repeat;
+      background-size: cover;
+      font-family: 'Open Sans', sans-serif;
+      font-size: 16px;
+      line-height: 18px;
+    }
+  </style>
   <!-- a title for the website -->
   <title>Work Day Scheduler</title>
 </head>
 
 
+<body>
 
-<body>  
   <!-- https://getbootstrap.com/docs/4.5/components/jumbotron/ -->
   <header class="jumbotron">
-        <!-- https://getbootstrap.com/docs/4.5/components/alerts/ -->
-        <div class="alert alert-info" role="alert" title="Instructions">
-          <strong>Click the 'Schedule_Your_Workday' button below to begin!</strong>
-        </div>
+
+    <!-- https://getbootstrap.com/docs/4.5/components/alerts/ -->
+    <div class="alert alert-info" role="alert" title="Instructions">
+      <strong>Click the 'Schedule_Your_Workday' button below to begin!</strong>
+    </div>
+
     <!-- header for the website -->
     <h1 class="display-3">Work Day Scheduler</h1>
+
     <!-- a quick app description -->
     <p class="lead line">A simple calendar app for scheduling your work day</p>
-    
+
     <!-- onclick hides this button but without executing its function https://stackoverflow.com/questions/16903605/hide-button-after-click-with-existing-form-on-page -->
     <!--  icon: https://fontawesome.com/v5.15/icons/hand-point-right?style=regular -->
-    <button id="schedule" class="btn" onclick="this.style.display = 'none'"><i
-      class="far fa-hand-point-right"></i> Schedule_Your_Workday</button>
-  
-        <!-- back btn with inline styling example-->
+    <button id="schedule" class="btn" onclick="this.style.display = 'none'"><i class="far fa-hand-point-right"></i>
+      Schedule_Your_Workday</button>
+
+    <!-- back btn with inline styling example-->
     <h3><a id="back" href="./index.html" style="color:white"> &larr; Go Back</a> </h3>
-      <br>
-      <!-- placeholder for the currentDay and time to be displayed -->
-      <strong>
-        <p id="currentDay" title="Today's date and current time!" class="lead"></p>
-      </strong>
-      <br>
-      </header>
+
+    <br>
+
+    <!-- placeholder for the currentDay and time to be displayed -->
+    <strong>
+      <p id="currentDay" title="Today's date and current time!" class="lead"></p>
+    </strong>
+
+    <br>
+  </header>
 
 
-      <!-- Hourly time blocks go here -->
+  <!-- Hourly time blocks go here -->
+  <div class="container"
+    title=" 'Past' times are greyed out, 'Present' time is highlighted in red and 'Future' times are highlighted in green">
+  </div>
 
-      <div class="container"
-        title=" 'Past' times are greyed out, 'Present' time is highlighted in red and 'Future' times are highlighted in green">
-      </div>
 </body>
 
-<!-- a page footer with a last modified timestamp using inline javascript-->
-
+<!-- a page footer with a last modified timestamp using inline javascript for practice-->
 <footer class="footer text-muted hide">
   <script>
     document.write("Last modified on: " + document.lastModified + "");
@@ -88,7 +91,7 @@
   <br>
   <br>
   <!-- leaving a gap here to accommodate spacing on mobile screens -->
-  <em >Copyrights &copy; DNB 2021 </em>
+  <em> Copyrights &copy; DNB 2021 </em>
 </footer>
 
 <!-- the javascript portion will load last to avoid the html page from getting stuck incase the javascript calls don't render  -->
