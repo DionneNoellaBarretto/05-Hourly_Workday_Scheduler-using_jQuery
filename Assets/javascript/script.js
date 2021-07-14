@@ -9,16 +9,16 @@ c) fix the color for present/future/past to work no matter say if user inputs 7a
 ✅ h) text area placeholder 
 ✅ i) auto change the col size when using smaller screens  (https://www.geeksforgeeks.org/how-to-change-column-to-row-on-small-display-in-bootstrap-4/)
 j) disable input to time blocks that are past
-k) need to save to local storage and delete as well (need to make the buttons work)
+✅k) need to add to local storage and delete as well
+✅l)  (need to make the buttons work)
 */
 
 // back button being selected by id not class!
 var back = $('#back');
+var add =$("#add");
+// by class
 var instructional_alert = $(".alert-info");
 var footerHide = $(".footer");
-
-
-
 
 // Immediately hide the back button
 back.hide();
@@ -27,7 +27,7 @@ back.hide();
 var hourDisplayed = moment().format('H');
 //console.log(hourDisplayed);
 
-// mapping the schedule your workday and save button with identifiers
+// mapping the schedule your workday and add button with identifiers
 var schedule = document.querySelector("#schedule");
 // console.log(schedule);
 
@@ -54,6 +54,7 @@ currentTime();
 
 // request user for start and end time
 function scheduleDay() { 
+    // console.log("schedule clicked");
     var startHour = 0;
     startHour = prompt ("What hour do you start your day? \n\n Select a number between 1 and 24");
     if (startHour <1  || startHour > 24 || isNaN(startHour)) {
@@ -87,22 +88,29 @@ if (i < 12) {
 } else if ((i == 12 || i ==24)){
     hour.text(i + " o'Clock");
 }
+// https://getbootstrap.com/docs/4.0/components/buttons/ 
+    // flex box container concept https://getbootstrap.com/docs/4.4/utilities/flex/, add icon from font awesome site  , trash icon https://fontawesome.com/v5.15/icons/trash-alt?style=regular
+    var addBtn = $('<button id="add">').addClass(" col-md-1 disabled btn-block btn add d-flex justify-content-center align-items-center fa fa-plus-circle");
+    var delBtn = $('<button>').addClass(" disabled col-md-1 erase btn btn-block d-flex justify-content-center align-items-center far fa-trash-alt");
+
 // Adds the class `todo and col-md-8` to the user text element
     // learnt how to add a text area placeholder https://www.w3schools.com/tags/att_textarea_placeholder.asp + // Uses col-*-* class for viewing to adjust on different screens..after trying several permutations and combinations settling for the col-md-* class i've chosen these values to appear full-size on small devices and half-size on medium or larger devices -->
     var userText = $('<textarea placeholder="Enter your todo task here.." class="text ">').addClass('todo col-md-8');
             // check to see if there is saved data to pull into the time blocks
 if(localStorage.getItem("cache") === null){
-    // console.log(todoData);
     userText.text('');
 }else{
-    var matchHour = i;
+    let matchHour = i;
     // console.log(matchHour);
-    var oldTodo = JSON.parse(window.localStorage.getItem("cache"));
+    var oldTodo = JSON.parse(localStorage.getItem("cache")); //window.localStorage is the same as localstorage
     // console.log(oldTodo);
     matchHour -= startHour;
+    // console.log(matchHour);
     userText.text(oldTodo[matchHour]);
+    // console.log(oldTodo[matchHour]);
 }
-    // assign color classes with a space before appending to existing class list based on time comparison to the displayed current hour
+
+// assign color classes with a space before appending to existing class list based on time comparison to the displayed current hour
 if (i < hourDisplayed) {
     userText.addClass(" past");
 }else if (i == hourDisplayed) {
@@ -110,13 +118,8 @@ if (i < hourDisplayed) {
 } else{
     userText.addClass(" future")
 }
-
-// https://getbootstrap.com/docs/4.0/components/buttons/ 
-    // flex box container concept https://getbootstrap.com/docs/4.4/utilities/flex/, save icon from font awesome site  , trash icon https://fontawesome.com/v5.15/icons/trash-alt?style=regular
-    var saveBtn = $('<button id="save">').addClass(" disabled col-md-1 btn-block btn save d-flex justify-content-center align-items-center fa fa-plus-circle");
-    var delBtn = $('<button>').addClass(" disabled col-md-1 erase btn btn-block d-flex justify-content-center align-items-center far fa-trash-alt");
    // joins up all the (sections) defined above to form a hourly schedule grid for the user in this particular order for a given row 
-   row.append(hour, userText,saveBtn,delBtn);
+   row.append(hour, userText,addBtn,delBtn);
    // places all these rows in the container class section of the html file by appending to the page
    timeBlocks.append(row);
 }
@@ -126,24 +129,43 @@ if (i < hourDisplayed) {
 instructional_alert.hide();
 footerHide.hide();
 };
-
-
-// put event data in local storage when clicking save button.
-$('.save').on('click',function(){
-    saveBtn.addClass(" active");
-
-    // variable to hold todo data that user enters 
-var todo =[];
-var todoJSON = JSON.stringify(todo);
+// as per this i cannot just say $('.add').on('click', function(){} ... since the add button was dynamically generated and there is no place holder in the index file to be referenced for click action
+$(document).on('click', '.add', function() {
+    // console.log("add");
+// this alert isnt required but helps if someone finds the button active visual cue a little too subtle
+    // alert("Your todo entry has been saved. Click Ok to add more todo items for the day or review your workday schedule!")
+    add.addClass(" active");
+    // array initialized variable to hold todo data that user enters 
+    var todo =[];
+    // console.log(todo);
     $('.todo').each(function(){
-        todo.push($(this).val());
+        //https://stackoverflow.com/questions/4088467/get-the-value-in-an-input-text-box
+            todo.push($(this).val());
+           // console.log(this.value); 
     });
-    localStorage.setItem("cache", cache.value);
-    localStorage.setItem(("todo"), todoJSON);
-})
+    // var text = $('.todo').text();
+    // localStorage.setItem('test', "A");
+    //console.log(todo);
+   // console.log(JSON.stringify(todo));
+    var todoJSON = JSON.stringify(todo)
+        // stores the todo item in string format
+    localStorage.setItem("todo", todoJSON);
 
+});
 
-
-
-
-
+// function to deletes user inputted text from the screen and from  browser local storage 
+$(document).on('click', '.erase', function() {
+    // validating via a alert to ask user to confirm if their input should be deleted if text area is not empty
+    if ($(document).siblings(".todo").val() !== "") {
+        var ask = confirm("Please click OK to confirm if you would like to delete this entire entry else click Cancel?");
+        
+        // If user confirms (i.e. truthy check), clear text area and clear local storage
+        $('.todo').each(function(){
+            if (ask) {
+                $(this).siblings(".todo").val("");
+                localStorage.removeItem($(this).siblings(".todo").attr("id"));
+            } else {
+                return;
+            }
+        } );
+}});

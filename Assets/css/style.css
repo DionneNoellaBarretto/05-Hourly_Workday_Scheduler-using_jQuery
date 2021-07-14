@@ -148,15 +148,15 @@ header .btn:hover {
 }
 
 
-/* Save Button */
-.save {
+/* Add (Save) Button */
+.add {
   border: 1px solid var(--black);
   background-color: var( --lemon_yellow);
   color: var(--save-button);
   padding: auto;
 }
 
-.save:hover {
+.add:hover {
   font-size: 30px;
   /* allows for gradual zooming when icon is hovered upon for a 0.1s*/
   transition: all 0.1s ease-in-out;
