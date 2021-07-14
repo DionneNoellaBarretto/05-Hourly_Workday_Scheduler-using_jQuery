@@ -1,4 +1,6 @@
 /* pending to do's 
+PENDING MUST HAVE: WHEN I refresh the page THEN the saved events persist
+
 ✅a) need to add the schedule for user input on start time and a back button
 b) see if the hours can be fixed when day starts in the evening and continues into wee hours
 c) fix the color for present/future/past to work no matter say if user inputs 7am when actual time is 4pm
@@ -13,8 +15,6 @@ c) fix the color for present/future/past to work no matter say if user inputs 7a
 ✅l) need to make the buttons work
 m) browser refresh persist functionality
 n) if delete is empty let user know there is no need to proceed with the deletion as there's nothing to delete
-
-PENDING MUST HAVE: WHEN I refresh the page THEN the saved events persist
 */
 
 // back button being selected by id not class!
@@ -192,7 +192,8 @@ if ($(document).siblings(".todo").val() !== "") {
         $('.todo').each(function(){
             if (ask) {
                 $(this).siblings(".todo").val("");
-                localStorage.setItem("", "");
+                localStorage.clear(".todo"); // clearing out todo from local storage
+                // localStorage.setItem("", "");
             }
         } );
 }
