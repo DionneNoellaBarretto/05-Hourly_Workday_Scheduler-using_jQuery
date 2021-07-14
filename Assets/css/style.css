@@ -154,6 +154,10 @@ header .btn:hover {
   background-color: var( --lemon_yellow);
   color: var(--save-button);
   padding: auto;
+  position: fixed;
+  right:    0;
+  top:   5;
+  width: 100%;
 }
 
 .add:hover {
@@ -164,10 +168,15 @@ header .btn:hover {
 
 /* Delete Button */
 .erase {
+  /* https://www.w3schools.com/cssref/pr_class_position.asp & https://stackoverflow.com/questions/5817233/align-button-at-the-bottom-of-div-using-css */
+  position: fixed;
+  left:    0;
+  top:   5;
+  width: 100%;
   border: 1px solid var(--black);
   background-color: var(--delete-button-background);
   color: var(--delete-button);
-  padding: auto;
+  padding: 3px;
 }
 
 .erase:hover {

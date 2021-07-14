@@ -11,6 +11,8 @@ c) fix the color for present/future/past to work no matter say if user inputs 7a
 j) disable input to time blocks that are past
 ✅k) need to add to local storage and delete as well
 ✅l)  (need to make the buttons work)
+m) browser refresh persist functionality
+n) if delete is empty let user know there is no need to proceed with the deletion as there's nothing to delete
 */
 
 // back button being selected by id not class!
@@ -78,7 +80,7 @@ for (var i = startHour; i<= (Number(startHour)+9); i++) {
     //  console.log(i, Number(startHour));
 
 // bootstrap grid system concept for sizing the widths : ref --> https://www.w3schools.com/bootstrap/bootstrap_grid_system.asp
-var hour = $('<div class="hour col-md-1">');
+var hour = $('<div class="hour col-md-2">');
 //console.log(hour);
 if (i < 12) {
     // Add text to the hour element defined above
@@ -88,14 +90,8 @@ if (i < 12) {
 } else if ((i == 12 || i ==24)){
     hour.text(i + " o'Clock");
 }
-// https://getbootstrap.com/docs/4.0/components/buttons/ 
-    // flex box container concept https://getbootstrap.com/docs/4.4/utilities/flex/, add icon from font awesome site  , trash icon https://fontawesome.com/v5.15/icons/trash-alt?style=regular
-    var addBtn = $('<button id="add">').addClass(" col-md-1 disabled btn-block btn add d-flex justify-content-center align-items-center fa fa-plus-circle");
-    var delBtn = $('<button>').addClass(" disabled col-md-1 erase btn btn-block d-flex justify-content-center align-items-center far fa-trash-alt");
-
-// Adds the class `todo and col-md-8` to the user text element
-    // learnt how to add a text area placeholder https://www.w3schools.com/tags/att_textarea_placeholder.asp + // Uses col-*-* class for viewing to adjust on different screens..after trying several permutations and combinations settling for the col-md-* class i've chosen these values to appear full-size on small devices and half-size on medium or larger devices -->
-    var userText = $('<textarea placeholder="Enter your todo task here.." class="text ">').addClass('todo col-md-8');
+// Adds the class `todo and col-md-9` to the user text element // learnt how to add a text area placeholder https://www.w3schools.com/tags/att_textarea_placeholder.asp + // Uses col-*-* class for viewing to adjust on different screens..after trying several permutations and combinations settling for the col-md-* class i've chosen these values to appear full-size on small devices and half-size on medium or larger devices -->
+    var userText = $('<textarea placeholder="Enter your todo task here..Use the enter key to add multiple lines of text.." class="text ">').addClass('todo col-md-9');
             // check to see if there is saved data to pull into the time blocks
 if(localStorage.getItem("cache") === null){
     userText.text('');
@@ -119,10 +115,17 @@ if (i < hourDisplayed) {
     userText.addClass(" future")
 }
    // joins up all the (sections) defined above to form a hourly schedule grid for the user in this particular order for a given row 
-   row.append(hour, userText,addBtn,delBtn);
+   row.append(hour, userText);
    // places all these rows in the container class section of the html file by appending to the page
    timeBlocks.append(row);
 }
+// https://getbootstrap.com/docs/4.0/components/buttons/  // flex box container concept https://getbootstrap.com/docs/4.4/utilities/flex/, add icon from font awesome site
+    var addBtn = $('<button id="add" title="Save all text entries to local browser storage">').addClass(" col-md-1 disabled btn-block btn add d-flex justify-content-center align-items-center fa fa-plus-circle");
+
+//1 trash icon button to refresh existing workday schedule to pristine state  https://fontawesome.com/v5.15/icons/trash-alt?style=regular
+var delBtn = $('<button title="Refresh existing schedule by deleing all text entries">').addClass(" disabled col-md-1 erase btn btn-block justify-content-center far fa-trash-alt");
+timeBlocks.append(delBtn, addBtn);
+
    //displays the back button once the schedule is created
    back.show();
    //hides the instructional alert up  and footer at the bottom
@@ -153,19 +156,21 @@ $(document).on('click', '.add', function() {
 
 });
 
-// function to deletes user inputted text from the screen and from  browser local storage 
+// function to deletes user all text from the screen and from  browser local storage 
 $(document).on('click', '.erase', function() {
-    // validating via a alert to ask user to confirm if their input should be deleted if text area is not empty
+    // validating via an alert to ask user to confirm if their input should be deleted if text area is not empty
     if ($(document).siblings(".todo").val() !== "") {
-        var ask = confirm("Please click OK to confirm if you would like to delete this entire entry else click Cancel?");
-        
+        var ask = confirm("Please click OK to confirm if you would like to delete all text entries on this page else click Cancel to proceed with updating your workday schedule?");
         // If user confirms (i.e. truthy check), clear text area and clear local storage
         $('.todo').each(function(){
             if (ask) {
                 $(this).siblings(".todo").val("");
-                localStorage.removeItem($(this).siblings(".todo").attr("id"));
+                localStorage.setItem("", "");
             } else {
                 return;
             }
         } );
-}});
+}else {
+    return;
+}
+});
