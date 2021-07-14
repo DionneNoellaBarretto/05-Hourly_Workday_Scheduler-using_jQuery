@@ -193,7 +193,6 @@ if ($(document).siblings(".todo").val() !== "") {
             if (ask) {
                 $(this).siblings(".todo").val("");
                 localStorage.clear(".todo"); // clearing out todo from local storage
-                // localStorage.setItem("", "");
             }
         } );
 }
