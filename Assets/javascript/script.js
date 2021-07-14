@@ -1,8 +1,7 @@
-/* pending to do's 
-PENDING MUST HAVE: WHEN I refresh the page THEN the saved events persist
+/* pending to do's  or KNOWN ISSUES
 
 ✅a) need to add the schedule for user input on start time and a back button
-b) see if the hours can be fixed when day starts in the evening and continues into wee hours
+b) see if the hours can be fixed when day starts in the evening say at 5pm past and continues into early morning hours past midnight ( 24'oclock)
 c) fix the color for present/future/past to work no matter say if user inputs 7am when actual time is 4pm
 ✅d) add background image(s)
 ✅ e) scale for table screen (intermediate)
@@ -13,8 +12,10 @@ c) fix the color for present/future/past to work no matter say if user inputs 7a
 ✅j) disable input to time blocks that are in the past
 ✅k) need to add to local storage and delete as well ( common save delete button implemented)
 ✅l) need to make the buttons work
-m) browser refresh persist functionality
+✅ m) browser refresh persist functionality ( I got this to work but the user still needs to start with entering the hour to see entries )
 n) if delete is empty let user know there is no need to proceed with the deletion as there's nothing to delete
+o) need to fix the placeholder for the hour before the present hour
+p) on tiny mobile screeens need to fix the placement of the add and delete floating buttons
 */
 
 // back button being selected by id not class!
@@ -89,27 +90,31 @@ var hour = $('<div class="hour col-md-1">');
 if (i < 12) {
     // Add text to the hour element defined above
     hour.text(i + ":00 AM");
-} else if(i > 12){
-    hour.text((i-12) + ":00 PM");
 } else if ((i == 12 || i ==24)){
     hour.text(i + " o'Clock");
-}
+} // if(i > 12) then convert to a 12 hour clock instead of a 24 hour clock
+else {
+    var revisedHour =i;
+    revisedHour -=12;
+    hour.text(revisedHour + ":00 PM");
+} 
 
 // Adds the class `todo and col-md-9` to the user text element // learnt how to add a text area placeholder https://www.w3schools.com/tags/att_textarea_placeholder.asp + // Uses col-*-* class for viewing to adjust on different screens..after trying several permutations and combinations settling for the col-md-* class i've chosen these values to appear full-size on small devices and half-size on medium or larger devices -->
     var userText = $('<textarea placeholder="Click to enter todo tasks here..\n Hit enter on your keyboard to add multiple lines of text with scroll functionality." class="text ">').addClass('todo col-md-9');
-            // check to see if there is saved data to pull into the time blocks
-if(localStorage.getItem("cache") === null){
+            // check to see if there is saved data ( using add or the save button options) to pull into the time blocks
+if(localStorage.getItem("todo") === null){
     userText.text('');
 }else{
-    let matchHour = i;
+    var matchHour = i;
     // console.log(matchHour);
-    var oldTodo = JSON.parse(localStorage.getItem("cache")); //window.localStorage is the same as localstorage
+    var oldTodo = JSON.parse(localStorage.getItem("todo")); //window.localStorage is the same as localstorage
     // console.log(oldTodo);
     matchHour -= startHour;
     // console.log(matchHour);
     userText.text(oldTodo[matchHour]);
     // console.log(oldTodo[matchHour]);
 }
+
   // flex box container concept https://getbootstrap.com/docs/4.4/utilities/flex/
   var saveBtn = $('<button class="col-md-1 btn d-flex justify-content-center align-items-center" title="individual save button logic for this rows text input"><i class="fas fa-save"></i></button>');
 //adds a save class to the btn and also an identifier with value of i to determine which number save button is clicked
@@ -144,9 +149,12 @@ timeBlocks.append(delBtn, addBtn);
    //hides the instructional alert up  and footer at the bottom
 instructional_alert.hide();
 footerHide.hide();
+
 };
+
+
 // as per this i cannot just say $('.add').on('click', function(){} ... since the add button was dynamically generated and there is no place holder in the index file to be referenced for click action
-$(document).on('click', '.add', function() {
+$(document).on('click', '.add', function Add() {
     // console.log("add");
 // this alert isnt required but helps if someone finds the button active visual cue a little too subtle
     // alert("Your todo entry has been saved. Click Ok to add more todo items for the day or review your workday schedule!")
@@ -170,7 +178,7 @@ $(document).on('click', '.add', function() {
 
 
 //event handler on individual save button that stores user input to local storage
-$(document).on('click', '.save', function() {
+$(document).on('click', '.save', function Save() {
     alert("Your todo entry has been saved. Click Ok to add more todo items for the day or review your workday schedule!")
     //initialize an array to hold the individual entries the user saves
     var toDoIndividualEntry = [];
@@ -184,7 +192,7 @@ $(document).on('click', '.save', function() {
 
 
 // function to deletes user all text from the screen and from  browser local storage 
-$(document).on('click', '.erase', function() {
+$(document).on('click', '.erase', function Delete() {
     // validating via an alert to ask user to confirm if their input should be deleted if text area is not empty
 if ($(document).siblings(".todo").val() !== "") {
         var ask = confirm("Please click OK to confirm if you would like to delete all text entries on this page else click Cancel to proceed with updating your workday schedule?");
@@ -198,3 +206,17 @@ if ($(document).siblings(".todo").val() !== "") {
 }
 });
 
+//page reload functionality 
+window.load = function(){
+if(localStorage.getItem("todo") === null){
+    userText.text('');
+}else{
+    var matchHour = i;
+    // console.log(matchHour);
+    var oldTodo = JSON.parse(localStorage.getItem("todo")); //window.localStorage is the same as localstorage
+    // console.log(oldTodo);
+    matchHour -= startHour;
+    // console.log(matchHour);
+    userText.text(oldTodo[matchHour]);
+    // console.log(oldTodo[matchHour]);
+}}

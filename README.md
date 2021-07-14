@@ -36,6 +36,8 @@ Laptop View:<img src= "./Assets/images/LaptopView.png">
 Mobile View:<img src= "./Assets/images/MobileView.png">
 Individual Entry Save Prompt: <img src= "./Assets/images/IndividualSavePrompt.png">
 Cumulative Entry Save Function: <img src= "./Assets/images/AddButton.png">
+Local Data Persistence between Page Refreshes if Delete is not triggered - to get to this page you still need to enter a start hour be it the same or new hour: <img src= "./Assets/images/DataPersistenceUponPageRefresh.png">
+Local Browser Storage logic for the 2 save implementations: <img src= "./Assets/images/LocalStorage(IndividualSavevsAddAll).png">
 Clear All Text Entries for the existing Schedule: <img src= "./Assets/images/DeleteEntriesforExistingSchedule(ClearAllText).png">
 
 
