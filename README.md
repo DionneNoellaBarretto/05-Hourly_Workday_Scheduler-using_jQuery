@@ -61,6 +61,7 @@ This homework is graded based on the following criteria:
 
 ✅ Application loads with no errors.
 ```
+<img src= "./Assets/images/NoErrorsOnPageLoad.png">
 
 ### Application Quality: 15%
 ```
