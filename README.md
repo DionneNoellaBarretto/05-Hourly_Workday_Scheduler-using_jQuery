@@ -2,7 +2,7 @@
 
 ## Task
 
-The task this week is to create a simple calendar application that will use the [Moment.js](https://momentjs.com/) library and will allow a user to save events for each hour of the day by modifying starter code. This app will run in the browser and feature dynamically updated HTML and CSS powered by jQuery.
+The task this week is to create a simple calendar application by modifying starter code that will use the [Moment.js](https://momentjs.com/) library and will allow a user to select their start time for a work day and save events/tasks/todo's for each hour of the day. This app will run in the browser and feature dynamically updated HTML and CSS powered by jQuery.
 
 ## User Story
 
