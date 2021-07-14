@@ -61,7 +61,7 @@ currentTime();
 
 function scheduleDay() {
     // console.log("schedule clicked");
-    // request user for start and end time
+    // request user for start since standard business hours really depends in the covid19 times with offices allowing flexi hours! 
     var startHour = 0;
     startHour = prompt("What hour do you start your day? \n\n Select a number between 1 and 24");
     if (startHour < 1 || startHour > 24 || isNaN(startHour)) {
