@@ -96,7 +96,7 @@ header .btn:hover {
 .row {
   /* https://developer.mozilla.org/en-US/docs/Web/CSS/white-space: with pre-wrap Sequences of white space are preserved. Lines are broken at newline characters, at <br>, and as necessary to fill line boxes. */
   white-space: pre-wrap;
-  height: 90px;
+  height: 130px;
   text-align: center;
   border-radius: 15px;
 }
@@ -153,10 +153,10 @@ header .btn:hover {
   border: 1px solid var(--black);
   background-color: var( --lemon_yellow);
   color: var(--save-button);
-  padding: auto;
+  padding: 3px;
   position: fixed;
   right:    0;
-  top:   5;
+  bottom:   3;
   width: 100%;
 }
 
@@ -171,7 +171,7 @@ header .btn:hover {
   /* https://www.w3schools.com/cssref/pr_class_position.asp & https://stackoverflow.com/questions/5817233/align-button-at-the-bottom-of-div-using-css */
   position: fixed;
   left:    0;
-  top:   5;
+  top:   2;
   width: 100%;
   border: 1px solid var(--black);
   background-color: var(--delete-button-background);

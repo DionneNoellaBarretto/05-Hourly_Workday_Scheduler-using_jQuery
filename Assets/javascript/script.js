@@ -80,7 +80,7 @@ for (var i = startHour; i<= (Number(startHour)+9); i++) {
     //  console.log(i, Number(startHour));
 
 // bootstrap grid system concept for sizing the widths : ref --> https://www.w3schools.com/bootstrap/bootstrap_grid_system.asp
-var hour = $('<div class="hour col-md-2">');
+var hour = $('<div class="hour col-md-1">');
 //console.log(hour);
 if (i < 12) {
     // Add text to the hour element defined above
@@ -90,8 +90,9 @@ if (i < 12) {
 } else if ((i == 12 || i ==24)){
     hour.text(i + " o'Clock");
 }
+
 // Adds the class `todo and col-md-9` to the user text element // learnt how to add a text area placeholder https://www.w3schools.com/tags/att_textarea_placeholder.asp + // Uses col-*-* class for viewing to adjust on different screens..after trying several permutations and combinations settling for the col-md-* class i've chosen these values to appear full-size on small devices and half-size on medium or larger devices -->
-    var userText = $('<textarea placeholder="Enter your todo task here..Use the enter key to add multiple lines of text.." class="text ">').addClass('todo col-md-9');
+    var userText = $('<textarea placeholder="Enter your todo task here.. \n Use the enter key to add                                                             \n                                              multiple lines of text with scroll functionality.." class="text ">').addClass('todo col-md-9');
             // check to see if there is saved data to pull into the time blocks
 if(localStorage.getItem("cache") === null){
     userText.text('');
@@ -105,6 +106,8 @@ if(localStorage.getItem("cache") === null){
     userText.text(oldTodo[matchHour]);
     // console.log(oldTodo[matchHour]);
 }
+  // flex box container concept https://getbootstrap.com/docs/4.4/utilities/flex/
+  var saveBtn = $('<button class="col-md-1 btn save d-flex justify-content-center align-items-center"><i class="fas fa-save"></i></button>');
 
 // assign color classes with a space before appending to existing class list based on time comparison to the displayed current hour
 if (i < hourDisplayed) {
@@ -115,14 +118,14 @@ if (i < hourDisplayed) {
     userText.addClass(" future")
 }
    // joins up all the (sections) defined above to form a hourly schedule grid for the user in this particular order for a given row 
-   row.append(hour, userText);
+   row.append(hour, userText,saveBtn);
    // places all these rows in the container class section of the html file by appending to the page
    timeBlocks.append(row);
 }
-// https://getbootstrap.com/docs/4.0/components/buttons/  // flex box container concept https://getbootstrap.com/docs/4.4/utilities/flex/, add icon from font awesome site
+// common saved
     var addBtn = $('<button id="add" title="Save all text entries to local browser storage">').addClass(" col-md-1 disabled btn-block btn add d-flex justify-content-center align-items-center fa fa-plus-circle");
 
-//1 trash icon button to refresh existing workday schedule to pristine state  https://fontawesome.com/v5.15/icons/trash-alt?style=regular
+//1 common trash icon button to refresh existing workday schedule to pristine state  https://fontawesome.com/v5.15/icons/trash-alt?style=regular
 var delBtn = $('<button title="Refresh existing schedule by deleing all text entries">').addClass(" disabled col-md-1 erase btn btn-block justify-content-center far fa-trash-alt");
 timeBlocks.append(delBtn, addBtn);
 
