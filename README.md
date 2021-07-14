@@ -27,8 +27,17 @@ UNC Boot Camp Submission: 🗂️ [Github Repository](https://github.com/DionneN
 
 --------------------------------
 ### ResponseUI Solution - Desktop, Tablet & Mobile Views
-Starting Screen-Desktop View
-<img src= "./Assets/images/05-third-party-apis-homework-demo.gif">
+Starting Screen: <img src= "./Assets/images/StarterScreen.png">
+User Start Hour Prompt: <img src= "./Assets/images/UserStartHourPrompt.png">
+Start Hour Input Error: <img src= "./Assets/images/StartHourInputError.png">
+Start Hour Confirmation Prompt: <img src= "./Assets/images/StartHourInputConfirmation.png">
+Dynamic Schedule Generated(Tablet View): <img src= "./Assets/images/ScheduleScreen(TabletView).png">
+Laptop View:<img src= "./Assets/images/LaptopView.png">
+Mobile View:<img src= "./Assets/images/MobileView.png">
+Individual Entry Save Prompt: <img src= "./Assets/images/IndividualSavePrompt.png">
+Cumulative Entry Save Function: <img src= "./Assets/images/AddButton.png">
+Clear All Text Entries for the existing Schedule: <img src= "./Assets/images/DeleteEntriesforExistingSchedule(ClearAllText).png">
+
 
 ## Grading Requirements
 

@@ -1,6 +1,6 @@
 /* pending to do's 
 ✅a) need to add the schedule for user input on start time and a back button
-b) see if the hours can be fixed when day starts in the evening 
+b) see if the hours can be fixed when day starts in the evening and continues into wee hours
 c) fix the color for present/future/past to work no matter say if user inputs 7am when actual time is 4pm
 ✅d) add background image(s)
 ✅ e) scale for table screen (intermediate)
@@ -8,14 +8,13 @@ c) fix the color for present/future/past to work no matter say if user inputs 7a
 ✅ g) hide the schedule your workday button once its clicked
 ✅ h) text area placeholder 
 ✅ i) auto change the col size when using smaller screens  (https://www.geeksforgeeks.org/how-to-change-column-to-row-on-small-display-in-bootstrap-4/)
-j) disable input to time blocks that are past
+✅j) disable input to time blocks that are in the past
 ✅k) need to add to local storage and delete as well ( common save delete button implemented)
 ✅l) need to make the buttons work
 m) browser refresh persist functionality
 n) if delete is empty let user know there is no need to proceed with the deletion as there's nothing to delete
 
-PENDING MUST HAVE: ✓ WHEN I click the save button for that time block THEN the text for that event is saved in local storage
-✓ WHEN I refresh the page THEN the saved events persist
+PENDING MUST HAVE: WHEN I refresh the page THEN the saved events persist
 */
 
 // back button being selected by id not class!
@@ -27,6 +26,8 @@ var footerHide = $(".footer");
 
 // Immediately hide the back button
 back.hide();
+footerHide.show();
+
 
 // returns the hour reading from the current moment in time - example: 18 for 18:XX hours, 2 for 2:xx hours
 var hourDisplayed = moment().format('H');
@@ -95,7 +96,7 @@ if (i < 12) {
 }
 
 // Adds the class `todo and col-md-9` to the user text element // learnt how to add a text area placeholder https://www.w3schools.com/tags/att_textarea_placeholder.asp + // Uses col-*-* class for viewing to adjust on different screens..after trying several permutations and combinations settling for the col-md-* class i've chosen these values to appear full-size on small devices and half-size on medium or larger devices -->
-    var userText = $('<textarea placeholder="Enter your todo task here.. \n Use the enter key to add                                                             \n                                              multiple lines of text with scroll functionality.." class="text ">').addClass('todo col-md-9');
+    var userText = $('<textarea placeholder="Click to enter todo tasks here..\n Hit enter on your keyboard to add multiple lines of text with scroll functionality." class="text ">').addClass('todo col-md-9');
             // check to see if there is saved data to pull into the time blocks
 if(localStorage.getItem("cache") === null){
     userText.text('');
@@ -110,11 +111,16 @@ if(localStorage.getItem("cache") === null){
     // console.log(oldTodo[matchHour]);
 }
   // flex box container concept https://getbootstrap.com/docs/4.4/utilities/flex/
-  var saveBtn = $('<button class="col-md-1 btn save d-flex justify-content-center align-items-center" title="individual save button logic for this rows text input"><i class="fas fa-save"></i></button>');
-
+  var saveBtn = $('<button class="col-md-1 btn d-flex justify-content-center align-items-center" title="individual save button logic for this rows text input"><i class="fas fa-save"></i></button>');
+//adds a save class to the btn and also an identifier with value of i to determine which number save button is clicked
+  saveBtn.addClass(" save").attr("id",i);
 // assign color classes with a space before appending to existing class list based on time comparison to the displayed current hour
 if (i < hourDisplayed) {
-    userText.addClass(" past");
+        // prevents user from updating past time slots..https://www.wufoo.com/html5/readonly-attribute/ ,  https://stackoverflow.com/questions/3297923/make-textarea-readonly-with-jquery 
+    // var userText = $('<textarea readonly placeholder= "This is a read only slot that cannot be updated as the hour has passed" class="text ">').addClass('todo col-md-9');
+    userText.addClass(" past").attr('readonly', true);
+    //replacing placeholder..
+    $('textarea[placeholder="Click to enter todo tasks here..\n Hit enter on your keyboard to add multiple lines of text with scroll functionality."]').attr('placeholder', 'This is a read only slot that cannot be updated as the hour has passed');
 }else if (i == hourDisplayed) {
     userText.addClass(" present");
 } else{
@@ -125,7 +131,8 @@ if (i < hourDisplayed) {
    // places all these rows in the container class section of the html file by appending to the page
    timeBlocks.append(row);
 }
-// common saved
+
+// common save button floating to the right
     var addBtn = $('<button id="add" title="Save all text entries to local browser storage">').addClass(" col-md-1 disabled btn-block btn add d-flex justify-content-center align-items-center fa fa-plus-circle");
 
 //1 common trash icon button to refresh existing workday schedule to pristine state  https://fontawesome.com/v5.15/icons/trash-alt?style=regular
@@ -159,24 +166,35 @@ $(document).on('click', '.add', function() {
     var todoJSON = JSON.stringify(todo)
         // stores the todo item in string format
     localStorage.setItem("todo", todoJSON);
-
 });
+
+
+//event handler on individual save button that stores user input to local storage
+$(document).on('click', '.save', function() {
+    alert("Your todo entry has been saved. Click Ok to add more todo items for the day or review your workday schedule!")
+    //initialize an array to hold the individual entries the user saves
+    var toDoIndividualEntry = [];
+    //ensures for each todo text area/ row the value on the screen is saved to local storage 
+    $('.todo').each(function(){
+        toDoIndividualEntry.push(this.value);
+    });
+    //local storage placeholder references the array of entries as individualtodo
+    localStorage.setItem("individualToDo", JSON.stringify(toDoIndividualEntry));
+});
+
 
 // function to deletes user all text from the screen and from  browser local storage 
 $(document).on('click', '.erase', function() {
     // validating via an alert to ask user to confirm if their input should be deleted if text area is not empty
-    if ($(document).siblings(".todo").val() !== "") {
+if ($(document).siblings(".todo").val() !== "") {
         var ask = confirm("Please click OK to confirm if you would like to delete all text entries on this page else click Cancel to proceed with updating your workday schedule?");
         // If user confirms (i.e. truthy check), clear text area and clear local storage
         $('.todo').each(function(){
             if (ask) {
                 $(this).siblings(".todo").val("");
                 localStorage.setItem("", "");
-            } else {
-                return;
             }
         } );
-}else {
-    return;
 }
 });
+

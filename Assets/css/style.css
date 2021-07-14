@@ -32,12 +32,14 @@ textarea {
 }
 
 footer{
-  font-size: 14px;
+  font-size: 17px;
+  font-weight: bolder;
   position: fixed !important;
   bottom: 10px;
   width: 100%;
-  height: 60px;
+  height: 70px;
   text-align: center;
+
 }
 
 #back, em{
@@ -157,7 +159,7 @@ header .btn:hover {
   position: fixed;
   right:    0;
   bottom:   3;
-  width: 100%;
+  /* width: 100%; */
 }
 
 .add:hover {
@@ -172,7 +174,7 @@ header .btn:hover {
   position: fixed;
   left:    0;
   top:   2;
-  width: 100%;
+  /* width: 100%; */
   border: 1px solid var(--black);
   background-color: var(--delete-button-background);
   color: var(--delete-button);
