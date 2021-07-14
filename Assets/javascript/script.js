@@ -9,10 +9,13 @@ c) fix the color for present/future/past to work no matter say if user inputs 7a
 ✅ h) text area placeholder 
 ✅ i) auto change the col size when using smaller screens  (https://www.geeksforgeeks.org/how-to-change-column-to-row-on-small-display-in-bootstrap-4/)
 j) disable input to time blocks that are past
-✅k) need to add to local storage and delete as well
-✅l)  (need to make the buttons work)
+✅k) need to add to local storage and delete as well ( common save delete button implemented)
+✅l) need to make the buttons work
 m) browser refresh persist functionality
 n) if delete is empty let user know there is no need to proceed with the deletion as there's nothing to delete
+
+PENDING MUST HAVE: ✓ WHEN I click the save button for that time block THEN the text for that event is saved in local storage
+✓ WHEN I refresh the page THEN the saved events persist
 */
 
 // back button being selected by id not class!
@@ -107,7 +110,7 @@ if(localStorage.getItem("cache") === null){
     // console.log(oldTodo[matchHour]);
 }
   // flex box container concept https://getbootstrap.com/docs/4.4/utilities/flex/
-  var saveBtn = $('<button class="col-md-1 btn save d-flex justify-content-center align-items-center"><i class="fas fa-save"></i></button>');
+  var saveBtn = $('<button class="col-md-1 btn save d-flex justify-content-center align-items-center" title="individual save button logic for this rows text input"><i class="fas fa-save"></i></button>');
 
 // assign color classes with a space before appending to existing class list based on time comparison to the displayed current hour
 if (i < hourDisplayed) {
