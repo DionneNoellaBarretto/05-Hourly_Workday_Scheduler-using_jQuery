@@ -14,7 +14,7 @@ c) fix the color for present/future/past to work no matter say if user inputs 7a
 ✅l) need to make the buttons work
 ✅ m) browser refresh persist functionality ( I got this to work but the user still needs to start with entering the hour to see entries )
 n) if delete is empty let user know there is no need to proceed with the deletion as there's nothing to delete
-o) need to fix the placeholder for the hour before the present hour
+o) need to fix the placeholder text for the hour before the present hour
 p) on tiny mobile screeen's need to fix the placement of the add and delete floating buttons ( seems like i will need to put one buttton on top and the other at the bottom to prevent overlap but then this will result in the buttons being displayed this way for the other screens as well which is not what i want)
 */
 
