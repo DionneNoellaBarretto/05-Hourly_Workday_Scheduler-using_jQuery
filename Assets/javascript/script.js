@@ -22,7 +22,7 @@ p) on tiny mobile screen's need to fix the placement of the add and delete float
 var back = $('#back');
 var add =$("#add");
 
-// seelction by class
+// selection by class
 var instructional_alert = $(".alert-info");
 var footerHide = $(".footer");
 
