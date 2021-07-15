@@ -153,7 +153,6 @@ header .btn:hover {
   position: fixed;
   right:    0;
   bottom:   3;
-  /* width: 100%; */
 }
 
 
@@ -169,7 +168,6 @@ header .btn:hover {
   position: fixed;
   left:    0;
   top:   2;
-  /* width: 100%; */
   border: 1px solid var(--black);
   background-color: var(--delete-button-background);
   color: var(--delete-button);
