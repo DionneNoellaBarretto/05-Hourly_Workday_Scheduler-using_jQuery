@@ -1,7 +1,7 @@
 /* pending to do's  or KNOWN ISSUES
 
 ✅a) need to add the schedule for user input on start time and a back button
-b) see if the hours can be fixed when day starts in the evening say at 5pm past and continues into early morning hours past midnight ( 24'oclock)
+✅ b) see if the hours can be fixed when day starts in the evening say at 5pm past and continues into early morning hours past midnight ( 24'oclock)
 c) fix the color for present/future/past to work no matter say if user inputs 7am when actual time is 4pm
 ✅d) add background image(s)
 ✅ e) scale for table screen (intermediate)
@@ -84,7 +84,9 @@ var row = $('<div class="w-100 row justify-content-center">');
 
     // creates time block in the div container portion of the html file for a standard work hour slot of 8 hours (+1 hour lunch break) depending on the start time of the user)
 var timeBlocks = $('.container');
-for (var i = startHour; i<= (Number(startHour)+9); i++) {
+var endHour = startHour + 9 ; 
+// for (var i = startHour; i<= (Number(startHour)+9); i++) {
+    for (var i = startHour; i<= endHour; i++) {
     //  console.log(i, Number(startHour));
 
 // bootstrap grid system concept for sizing the widths : ref --> https://www.w3schools.com/bootstrap/bootstrap_grid_system.asp
@@ -94,13 +96,16 @@ var hour = $('<div class="hour col-md-1">');
 if (i < 12) {
     // Add text to the hour element defined above
     hour.text(i + ":00 AM");
-} else if ((i == 12 || i ==24)){
+} else if ((i == 12 || i == 24)){
     hour.text(i + " o'Clock");
 } // if(i > 12) then convert to a 12 hour clock instead of a 24 hour clock
 else {
-    var revisedHour =i;
-    revisedHour -=12;
-    hour.text(revisedHour + ":00 PM");
+// accounting for hours past midnight to be represented as am instead of pm
+    if (i - 24 > 0 ){
+        hour.text(i - 24 + ":00 AM");
+    } else {
+        hour.text(i - 12 + ":00 PM");
+    }
 } 
 
 // Adds the class `todo and col-md-9` to the user text element // learnt how to add a text area placeholder https://www.w3schools.com/tags/att_textarea_placeholder.asp + // Uses col-*-* class for viewing to adjust on different screens..after trying several permutations and combinations settling for the col-md-* class i've chosen these values to appear full-size on small devices and half-size on medium or larger devices -->
