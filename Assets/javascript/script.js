@@ -256,7 +256,6 @@ if ($(document).siblings(".todo").val() !== "") {
 
 //page reload functionality  
 // windows.load  is removed as of jquery 1.9 ( https://stackoverflow.com/questions/22183739/what-is-the-difference-between-window-load-and-window-onload)
-//page reload functionality 
 window.load = function(){
     if(localStorage.getItem("todo") === null){
         userText.text('');
