@@ -2,7 +2,7 @@
 
 ✅a) need to add the schedule for user input on start time and a back button
 ✅ b) see if the hours can be fixed when day starts in the evening say at 5pm past and continues into early morning hours past midnight ( 24'oclock)
-c) fix the color for present/future/past to work no matter say if user inputs 7am when actual time is 4pm
+✅c) (fixed as an effect of the above hour fix)fix the color for present/future/past to work no matter say if user inputs 7am when actual time is 4pm
 ✅d) add background image(s)
 ✅ e) scale for table screen (intermediate)
 ✅f) add instructions for starting the app
@@ -72,7 +72,7 @@ function scheduleDay() {
         {
     alert(`You entered your start time as ${startHour} am!`);
         } else if (startHour >= 13){
-            alert(`You entered your start start time as ${startHour}:00 hours in the evening!`);
+            alert(`You entered your start time as ${startHour}:00 hours in the evening!`);
     
         } else {
             alert(`You entered your start time as ${startHour} o'clock'!`);
@@ -125,7 +125,7 @@ else {
 } 
 
 // Adds the class `todo and col-md-9` to the user text element // learnt how to add a text area placeholder https://www.w3schools.com/tags/att_textarea_placeholder.asp + // Uses col-*-* class for viewing to adjust on different screens..after trying several permutations and combinations settling for the col-md-* class i've chosen these values to appear full-size on small devices and half-size on medium or larger devices -->
-var userText = $('<textarea placeholder="Click to enter todo tasks here..\n Hit enter on your keyboard to add multiple lines of text with scroll functionality." class="text ">').addClass('todo col-md-9');      // check to see if there is saved data ( using add or the save button options) to pull into the time blocks
+var userText = $('<textarea placeholder="Click to enter todo tasks here..\n Hit enter on your keyboard to add multiple lines of text with scroll functionality." class="text " id="text">').addClass('todo col-md-9');      // check to see if there is saved data ( using add or the save button options) to pull into the time blocks
                
 // check to see if there is saved data ( using add or the save button options) to pull into the time blocks
 if(localStorage.getItem("todo") === null){
@@ -142,7 +142,6 @@ if(localStorage.getItem("todo") === null){
     userText.text(oldTodo[matchHour]);
     // console.log(oldTodo[matchHour]);
 }
-
 if(localStorage.getItem("individualToDo") === null){
     userText.text('');
 }else{
@@ -168,13 +167,18 @@ if(localStorage.getItem("individualToDo") === null){
           // prevents user from updating past time slots..https://www.wufoo.com/html5/readonly-attribute/ ,  https://stackoverflow.com/questions/3297923/make-textarea-readonly-with-jquery 
       // var userText = $('<textarea readonly placeholder= "This is a read only slot that cannot be updated as the hour has passed" class="text ">').addClass('todo col-md-9');
       userText.addClass(" past").attr('readonly', true);
-      //replacing placeholder..
-      $('textarea[placeholder="Click to enter todo tasks here..\n Hit enter on your keyboard to add multiple lines of text with scroll functionality."]').attr('placeholder', 'This is a read only slot that cannot be updated as the hour has passed');
-  }else if (i == hourDisplayed) {
+     $('textarea[placeholder="Click to enter todo tasks here..\n Hit enter on your keyboard to add multiple lines of text with scroll functionality."]').attr('placeholder', 'This is a read only slot that cannot be updated as the hour has passed');
+      }else if (i == hourDisplayed) {
       userText.addClass(" present");
   } else{
       userText.addClass(" future")
   }
+
+//           //replacing placeholder for past class rows highlighted in grey https://www.javascripttutorial.net/dom/css/check-if-an-element-contains-a-class/
+// //   if(div.classList.contains("past")){
+//     if($("#text").hasClass("past")){
+//         $('textarea[placeholder="Click to enter todo tasks here..\n Hit enter on your keyboard to add multiple lines of text with scroll functionality."]').attr('placeholder', 'This is a read only slot that cannot be updated as the hour has passed');
+//   };
 
   // joins up all the (sections) defined above to form a hourly schedule grid for the user in this particular order for a given row 
      row.append(hour, userText,saveBtn);
