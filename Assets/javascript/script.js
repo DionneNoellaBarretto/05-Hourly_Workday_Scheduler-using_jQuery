@@ -167,7 +167,7 @@ if(localStorage.getItem("individualToDo") === null){
           // prevents user from updating past time slots..https://www.wufoo.com/html5/readonly-attribute/ ,  https://stackoverflow.com/questions/3297923/make-textarea-readonly-with-jquery 
       // var userText = $('<textarea readonly placeholder= "This is a read only slot that cannot be updated as the hour has passed" class="text ">').addClass('todo col-md-9');
       userText.addClass(" past").attr('readonly', true);
-     $('textarea[placeholder="Click to enter todo tasks here..\n Hit enter on your keyboard to add multiple lines of text with scroll functionality."]').attr('placeholder', 'This is a read only slot that cannot be updated as the hour has passed');
+    // $('textarea[placeholder="Click to enter todo tasks here..\n Hit enter on your keyboard to add multiple lines of text with scroll functionality."]').attr('placeholder', 'This is a read only slot that cannot be updated as the hour has passed');
       }else if (i == hourDisplayed) {
       userText.addClass(" present");
   } else{
