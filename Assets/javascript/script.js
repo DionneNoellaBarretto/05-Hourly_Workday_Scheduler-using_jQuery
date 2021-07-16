@@ -84,15 +84,31 @@ var row = $('<div class="w-100 row justify-content-center">');
 
     // creates time block in the div container portion of the html file for a standard work hour slot of 8 hours (+1 hour lunch break) depending on the start time of the user)
 var timeBlocks = $('.container');
-var endHour = startHour + 9 ; 
+// for efficiency  computing this once and storing it in a value
+var endHour = Number(startHour) + 9 ; 
 // for (var i = startHour; i<= (Number(startHour)+9); i++) {
     for (var i = startHour; i<= endHour; i++) {
     //  console.log(i, Number(startHour));
 
 // bootstrap grid system concept for sizing the widths : ref --> https://www.w3schools.com/bootstrap/bootstrap_grid_system.asp
 var hour = $('<div class="hour col-md-1">');
+
 //console.log(hour);
 // hour block logic denoting the hour of the time slot the user updates in a given workday
+
+// 24 hour display logic should we choose to revert to that 
+// var quotient = Math.floor(i / 12 );
+
+// if ((i == 12 || i == 24)) {
+//     // Add text to the hour element defined above
+//     hour.text(i + " o'Clock");
+// } else if ( quotient % 2 == 0) {
+//     hour.text(i - 12 + ":00 AM");
+// } // if(i > 12) then convert to a 12 hour clock instead of a 24 hour clock
+// else {
+//     hour.text(i + ":00 PM");
+// }
+
 if (i < 12) {
     // Add text to the hour element defined above
     hour.text(i + ":00 AM");
